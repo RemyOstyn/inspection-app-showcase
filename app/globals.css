@@ -1,26 +1,277 @@
+/* Import Tailwind CSS v4 and animation utilities */
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Custom variant for dark mode with better specificity */
+@custom-variant dark (&:is(.dark *));
 
+/* 
+ * Design System - Inline Theme Configuration
+ * 
+ * This section defines the core design tokens for the inspection app showcase
+ * All CSS variables are mapped to Tailwind utilities for consistent usage
+ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Typography - Geist font family */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  /* Base color system */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  /* UI Components */
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  
+  /* Interactive elements */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  
+  /* Muted and accent colors */
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  
+  /* Destructive actions */
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  
+  /* Borders and inputs */
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
+  /* Chart colors for dashboard components */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  
+  /* Sidebar navigation (if needed) */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Border radius system */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* 
+ * Light Theme - Root CSS Variables
+ * Using OKLCH color space for better color consistency and accessibility
+ */
+:root {
+  /* Border radius for consistent component styling */
+  --radius: 0.625rem;
+  
+  /* Base colors */
+  --background: oklch(1 0 0); /* Pure white */
+  --foreground: oklch(0.145 0 0); /* Dark gray text */
+  
+  /* Card components */
+  --card: oklch(1 0 0); /* White background */
+  --card-foreground: oklch(0.145 0 0); /* Dark text on cards */
+  
+  /* Popover components */
+  --popover: oklch(1 0 0); /* White popover background */
+  --popover-foreground: oklch(0.145 0 0); /* Dark popover text */
+  
+  /* Primary brand colors */
+  --primary: oklch(0.205 0 0); /* Dark primary */
+  --primary-foreground: oklch(0.985 0 0); /* Light text on primary */
+  
+  /* Secondary colors */
+  --secondary: oklch(0.97 0 0); /* Light secondary */
+  --secondary-foreground: oklch(0.205 0 0); /* Dark text on secondary */
+  
+  /* Muted colors for subtle elements */
+  --muted: oklch(0.97 0 0); /* Light muted background */
+  --muted-foreground: oklch(0.556 0 0); /* Medium gray text */
+  
+  /* Accent colors */
+  --accent: oklch(0.97 0 0); /* Light accent */
+  --accent-foreground: oklch(0.205 0 0); /* Dark text on accent */
+  
+  /* Destructive actions (errors, delete, etc.) */
+  --destructive: oklch(0.577 0.245 27.325); /* Red for warnings/errors */
+  --destructive-foreground: oklch(0.985 0 0); /* Light text on destructive */
+  
+  /* Form elements and borders */
+  --border: oklch(0.922 0 0); /* Light gray borders */
+  --input: oklch(0.922 0 0); /* Input field backgrounds */
+  --ring: oklch(0.708 0 0); /* Focus ring color */
+  
+  /* Chart colors for data visualization */
+  --chart-1: oklch(0.646 0.222 41.116); /* Orange */
+  --chart-2: oklch(0.6 0.118 184.704); /* Teal */
+  --chart-3: oklch(0.398 0.07 227.392); /* Blue */
+  --chart-4: oklch(0.828 0.189 84.429); /* Green */
+  --chart-5: oklch(0.769 0.188 70.08); /* Yellow */
+  
+  /* Sidebar navigation colors */
+  --sidebar: oklch(0.985 0 0); /* Light sidebar background */
+  --sidebar-foreground: oklch(0.145 0 0); /* Dark sidebar text */
+  --sidebar-primary: oklch(0.205 0 0); /* Primary sidebar elements */
+  --sidebar-primary-foreground: oklch(0.985 0 0); /* Text on primary sidebar */
+  --sidebar-accent: oklch(0.97 0 0); /* Accent sidebar elements */
+  --sidebar-accent-foreground: oklch(0.205 0 0); /* Text on accent sidebar */
+  --sidebar-border: oklch(0.922 0 0); /* Sidebar borders */
+  --sidebar-ring: oklch(0.708 0 0); /* Sidebar focus rings */
+}
+
+/* 
+ * Dark Theme - CSS Variables Override
+ * Inverted color scheme for dark mode experience
+ */
+.dark {
+  /* Base colors - inverted from light theme */
+  --background: oklch(0.145 0 0); /* Dark background */
+  --foreground: oklch(0.985 0 0); /* Light text */
+  
+  /* Card components */
+  --card: oklch(0.205 0 0); /* Dark card background */
+  --card-foreground: oklch(0.985 0 0); /* Light text on cards */
+  
+  /* Popover components */
+  --popover: oklch(0.205 0 0); /* Dark popover background */
+  --popover-foreground: oklch(0.985 0 0); /* Light popover text */
+  
+  /* Primary brand colors */
+  --primary: oklch(0.922 0 0); /* Light primary for contrast */
+  --primary-foreground: oklch(0.205 0 0); /* Dark text on primary */
+  
+  /* Secondary colors */
+  --secondary: oklch(0.269 0 0); /* Medium dark secondary */
+  --secondary-foreground: oklch(0.985 0 0); /* Light text on secondary */
+  
+  /* Muted colors */
+  --muted: oklch(0.269 0 0); /* Dark muted background */
+  --muted-foreground: oklch(0.708 0 0); /* Medium light text */
+  
+  /* Accent colors */
+  --accent: oklch(0.269 0 0); /* Dark accent */
+  --accent-foreground: oklch(0.985 0 0); /* Light text on accent */
+  
+  /* Destructive actions */
+  --destructive: oklch(0.704 0.191 22.216); /* Lighter red for dark mode */
+  --destructive-foreground: oklch(0.985 0 0); /* Light text on destructive */
+  
+  /* Form elements and borders */
+  --border: oklch(1 0 0 / 10%); /* Subtle light borders */
+  --input: oklch(1 0 0 / 15%); /* Slightly lighter input backgrounds */
+  --ring: oklch(0.556 0 0); /* Medium focus rings */
+  
+  /* Chart colors adapted for dark mode */
+  --chart-1: oklch(0.488 0.243 264.376); /* Purple */
+  --chart-2: oklch(0.696 0.17 162.48); /* Cyan */
+  --chart-3: oklch(0.769 0.188 70.08); /* Yellow */
+  --chart-4: oklch(0.627 0.265 303.9); /* Pink */
+  --chart-5: oklch(0.645 0.246 16.439); /* Orange */
+  
+  /* Sidebar navigation for dark mode */
+  --sidebar: oklch(0.205 0 0); /* Dark sidebar background */
+  --sidebar-foreground: oklch(0.985 0 0); /* Light sidebar text */
+  --sidebar-primary: oklch(0.488 0.243 264.376); /* Purple primary */
+  --sidebar-primary-foreground: oklch(0.985 0 0); /* Light text on primary */
+  --sidebar-accent: oklch(0.269 0 0); /* Dark accent */
+  --sidebar-accent-foreground: oklch(0.985 0 0); /* Light text on accent */
+  --sidebar-border: oklch(1 0 0 / 10%); /* Subtle borders */
+  --sidebar-ring: oklch(0.556 0 0); /* Medium focus rings */
+}
+
+/* 
+ * Base Layer - Global Element Styling
+ * Sets up consistent styling for all elements
+ */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  
+  /* Smooth scrolling for better UX */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Focus management for accessibility */
+  [tabindex="-1"]:focus:not(:focus-visible) {
+    outline: 0 !important;
+  }
+  
+  /* Better text rendering */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 
+ * Utility Layer - Custom Utility Classes
+ * Additional utilities specific to the inspection app showcase
+ */
+@layer utilities {
+  /* Content width utilities for marketing sections */
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Text gradient utilities for marketing headers */
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-accent {
+    @apply bg-gradient-to-r from-accent to-accent/70 bg-clip-text text-transparent;
+  }
+  
+  /* Animation utilities for interactions */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  /* Backdrop blur utilities for modern UI */
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+  
+  /* Shadow utilities for depth */
+  .shadow-soft {
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+  }
+  
+  .shadow-medium {
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.12);
+  }
+  
+  .shadow-strong {
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.16);
+  }
 }

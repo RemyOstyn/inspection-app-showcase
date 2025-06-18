@@ -1,4 +1,41 @@
-# CLAUDE.md - White Label Marketing Website for Offline-First Inspection Platform
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Development Commands
+
+```bash
+# Start development server with Turbopack
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm run start
+
+# Run ESLint
+npm run lint
+```
+
+## Project Architecture
+
+This is a Next.js 15 marketing website built with:
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript with strict mode enabled
+- **Styling**: Tailwind CSS v4 with CSS variables
+- **Components**: shadcn/ui (New York style) with Lucide icons
+- **Font**: Geist Sans and Geist Mono
+
+### Directory Structure
+- `/app` - Next.js App Router pages and layouts
+- `/components` - Reusable React components
+  - `/ui` - shadcn/ui components
+- `/lib` - Utility functions and shared code
+- `/public` - Static assets
+
+### Path Aliases
+- `@/*` - Root directory imports
 
 ## Project Overview
 
@@ -275,3 +312,14 @@ Don't lead with "industrial inspection" - instead position as "offline-first fie
 - Technology partners
 
 Remember: The goal is to show versatility while maintaining credibility. Use the industrial inspection screenshots as proof of capability in demanding environments, but frame them as one of many possible applications.
+
+## Best Practices
+
+- Always create separate components to avoid heavy files
+- Only use shadcn components, add them if needed with shadcn command, create custom components only if shadcn does not have the component you need
+
+## Memories
+
+- Always make the pages SEO optimized to avoid reviewing them at the end of the project
+- Use SSR and Client Side redering when needed, following best practices
+- Never use dirty solutions or workarounds. Always follow best coding practices based on the framework used (Next.js 15, tailwind css, shadcn...)
