@@ -75,7 +75,7 @@ function FeaturesGrid() {
 
 export function KeyFeatures() {
   return (
-    <section id="key-features" className="relative py-24">
+    <section id="key-features" className="relative py-12">
       <div className="container-wide bg-muted/30 rounded-3xl py-16">
         <motion.div 
           className="text-center mb-16"
