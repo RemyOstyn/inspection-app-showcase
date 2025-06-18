@@ -2,6 +2,7 @@ import { MarketingLayout } from "@/components/marketing-layout";
 import { Hero } from "@/components/sections/hero";
 import { UseCases } from "@/components/sections/use-cases";
 import { KeyFeatures } from "@/components/sections/key-features";
+import { ProductShowcase } from "@/components/sections/product-showcase";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -19,8 +20,9 @@ export default function HomePage() {
   return (
     <MarketingLayout>
       <Hero />
-      <UseCases />
       <KeyFeatures />
+      <UseCases />
+      <ProductShowcase />
     </MarketingLayout>
   );
 }

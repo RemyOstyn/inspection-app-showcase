@@ -53,7 +53,7 @@ export function Hero() {
           {/* Scroll indicator */}
           <div className="mt-12">
             <Link
-              href="#use-cases"
+              href="#key-features"
               className="group flex flex-col items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
               aria-label="Scroll to use cases"
             >
