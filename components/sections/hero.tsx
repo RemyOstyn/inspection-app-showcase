@@ -7,9 +7,8 @@ import { motion } from "framer-motion"
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center px-4 py-16 sm:px-6 lg:px-8">
-
-      <div className="mx-auto max-w-7xl text-center">
+    <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/20">
+      <div className="container-wide text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

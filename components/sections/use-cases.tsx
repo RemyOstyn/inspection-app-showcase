@@ -88,8 +88,8 @@ function UseCasesCarousel() {
 
 export function UseCases() {
   return (
-    <section id="use-cases" className="relative py-24 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
+    <section id="use-cases" className="relative py-24">
+      <div className="container-wide">
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center rounded-full border border-border/50 bg-background/80 backdrop-blur-sm px-4 py-2 text-sm font-medium text-muted-foreground mb-4">

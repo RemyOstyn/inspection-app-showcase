@@ -10,19 +10,13 @@ import {
   ROUTES, 
   INDUSTRY_ROUTES, 
   CONTACT, 
-  SOCIAL_LINKS, 
-  TRUST_SIGNALS 
+  SOCIAL_LINKS 
 } from "@/lib/constants";
 import { 
   Mail, 
   Phone, 
   MapPin, 
-  X, 
-  Linkedin, 
-  Github,
-  Shield,
-  Award,
-  Lock,
+  X,
   CheckCircle
 } from "lucide-react";
 
@@ -71,17 +65,11 @@ export function Footer() {
     { name: "GDPR", href: "/gdpr" },
   ];
 
-  const trustSignals = [
-    { icon: Shield, label: "SOC 2 Type II", description: "Security certified" },
-    { icon: Lock, label: "GDPR Compliant", description: "Privacy protected" },
-    { icon: Award, label: "ISO 27001", description: "Quality assured" },
-    { icon: CheckCircle, label: "99.9% Uptime", description: "Always available" },
-  ];
 
   const socialLinks = [
     { name: "X (Twitter)", href: SOCIAL_LINKS.TWITTER, icon: X },
-    { name: "LinkedIn", href: SOCIAL_LINKS.LINKEDIN, icon: Linkedin },
-    { name: "GitHub", href: SOCIAL_LINKS.GITHUB, icon: Github },
+    { name: "LinkedIn", href: SOCIAL_LINKS.LINKEDIN, icon: Mail }, // Using Mail as placeholder
+    { name: "GitHub", href: SOCIAL_LINKS.GITHUB, icon: Mail }, // Using Mail as placeholder
   ];
 
   return (
@@ -230,47 +218,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Trust Signals */}
-        <div className="mb-12">
-          <h4 className="font-semibold mb-6 text-center">Trusted by businesses worldwide</h4>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {trustSignals.map((signal) => (
-              <div key={signal.label} className="text-center p-4 rounded-lg border bg-card">
-                <signal.icon className="w-8 h-8 mx-auto mb-2 text-primary" />
-                <div className="font-medium text-sm">{signal.label}</div>
-                <div className="text-xs text-muted-foreground mt-1">{signal.description}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Stats */}
-        <div className="mb-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div className="p-4">
-              <div className="text-2xl font-bold text-primary mb-1">
-                {TRUST_SIGNALS.COMPANIES.split(' ')[0]}
-              </div>
-              <div className="text-sm text-muted-foreground">Companies Worldwide</div>
-            </div>
-            <div className="p-4">
-              <div className="text-2xl font-bold text-primary mb-1">
-                {TRUST_SIGNALS.INSPECTIONS.split(' ')[0]}
-              </div>
-              <div className="text-sm text-muted-foreground">Inspections Completed</div>
-            </div>
-            <div className="p-4">
-              <div className="text-2xl font-bold text-primary mb-1">
-                {TRUST_SIGNALS.UPTIME.split(' ')[0]}
-              </div>
-              <div className="text-sm text-muted-foreground">Uptime Reliability</div>
-            </div>
-            <div className="p-4">
-              <div className="text-2xl font-bold text-primary mb-1">Zero</div>
-              <div className="text-sm text-muted-foreground">Data Loss Incidents</div>
-            </div>
-          </div>
-        </div>
 
         <Separator className="mb-8" />
 
