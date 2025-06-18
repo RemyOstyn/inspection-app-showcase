@@ -100,7 +100,7 @@
   --secondary-foreground: oklch(0.25 0.02 250); /* Dark slate text on secondary */
   
   /* Muted colors for subtle elements */
-  --muted: oklch(0.97 0 0); /* Light muted background */
+  --muted: oklch(0.94 0.005 250); /* Light slate muted background for better contrast */
   --muted-foreground: oklch(0.556 0 0); /* Medium gray text */
   
   /* Accent colors - Professional orange for CTAs */
