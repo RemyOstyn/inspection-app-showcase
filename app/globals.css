@@ -91,21 +91,21 @@
   --popover: oklch(1 0 0); /* White popover background */
   --popover-foreground: oklch(0.145 0 0); /* Dark popover text */
   
-  /* Primary brand colors */
-  --primary: oklch(0.205 0 0); /* Dark primary */
+  /* Primary brand colors - Professional blue for inspection platform */
+  --primary: oklch(0.45 0.15 250); /* Professional blue */
   --primary-foreground: oklch(0.985 0 0); /* Light text on primary */
   
-  /* Secondary colors */
-  --secondary: oklch(0.97 0 0); /* Light secondary */
-  --secondary-foreground: oklch(0.205 0 0); /* Dark text on secondary */
+  /* Secondary colors - Complementary slate */
+  --secondary: oklch(0.94 0.01 250); /* Light slate secondary */
+  --secondary-foreground: oklch(0.25 0.02 250); /* Dark slate text on secondary */
   
   /* Muted colors for subtle elements */
   --muted: oklch(0.97 0 0); /* Light muted background */
   --muted-foreground: oklch(0.556 0 0); /* Medium gray text */
   
-  /* Accent colors */
-  --accent: oklch(0.97 0 0); /* Light accent */
-  --accent-foreground: oklch(0.205 0 0); /* Dark text on accent */
+  /* Accent colors - Professional orange for CTAs */
+  --accent: oklch(0.92 0.03 40); /* Light orange accent */
+  --accent-foreground: oklch(0.35 0.08 40); /* Dark orange text on accent */
   
   /* Destructive actions (errors, delete, etc.) */
   --destructive: oklch(0.577 0.245 27.325); /* Red for warnings/errors */
@@ -151,21 +151,21 @@
   --popover: oklch(0.205 0 0); /* Dark popover background */
   --popover-foreground: oklch(0.985 0 0); /* Light popover text */
   
-  /* Primary brand colors */
-  --primary: oklch(0.922 0 0); /* Light primary for contrast */
-  --primary-foreground: oklch(0.205 0 0); /* Dark text on primary */
+  /* Primary brand colors - Professional blue for dark mode */
+  --primary: oklch(0.65 0.15 250); /* Lighter blue for dark mode contrast */
+  --primary-foreground: oklch(0.1 0.02 250); /* Dark text on primary */
   
-  /* Secondary colors */
-  --secondary: oklch(0.269 0 0); /* Medium dark secondary */
-  --secondary-foreground: oklch(0.985 0 0); /* Light text on secondary */
+  /* Secondary colors - Slate for dark mode */
+  --secondary: oklch(0.25 0.02 250); /* Dark slate secondary */
+  --secondary-foreground: oklch(0.85 0.01 250); /* Light slate text on secondary */
   
   /* Muted colors */
   --muted: oklch(0.269 0 0); /* Dark muted background */
   --muted-foreground: oklch(0.708 0 0); /* Medium light text */
   
-  /* Accent colors */
-  --accent: oklch(0.269 0 0); /* Dark accent */
-  --accent-foreground: oklch(0.985 0 0); /* Light text on accent */
+  /* Accent colors - Orange for dark mode */
+  --accent: oklch(0.3 0.08 40); /* Dark orange accent */
+  --accent-foreground: oklch(0.9 0.03 40); /* Light orange text on accent */
   
   /* Destructive actions */
   --destructive: oklch(0.704 0.191 22.216); /* Lighter red for dark mode */
@@ -260,6 +260,22 @@
   .animate-fade-in-up {
     animation: fadeInUp 0.6s ease-out;
   }
+
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  .animation-delay-6000 {
+    animation-delay: 6s;
+  }
   
   /* Backdrop blur utilities for modern UI */
   .backdrop-blur-xs {
@@ -312,5 +328,20 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
   }
 }
