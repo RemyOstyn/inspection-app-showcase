@@ -12,7 +12,6 @@ import {
   Smartphone,
   Server
 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { TRUST_SIGNALS } from "@/lib/constants";
 
 const cardContainerVariants = {
@@ -175,11 +174,11 @@ const statistics = [
 
 export function TrustSignals() {
   return (
-    <section className="py-24 bg-gradient-to-b from-muted/30 to-muted/50">
+    <section className="py-20 bg-gradient-to-b from-muted/30 to-muted/50">
       <div className="container-wide">
         {/* Header */}
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -193,15 +192,14 @@ export function TrustSignals() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Trusted by Businesses Worldwide
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Built with enterprise-grade security, proven reliability, and the technology 
-            stack that powers mission-critical operations.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Join thousands of companies using our platform with enterprise-grade security and proven reliability.
           </p>
         </motion.div>
 
-        {/* Statistics */}
+        {/* Hero Statistics */}
         <motion.div 
-          className="mb-16"
+          className="mb-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
@@ -212,73 +210,65 @@ export function TrustSignals() {
           >
             {statistics.map((stat, index) => (
               <motion.div key={index} custom={index} variants={cardVariants}>
-                <Card className="text-center">
-                  <CardContent className="p-6">
-                    <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
-                      <AnimatedNumber value={stat.value} />
-                    </div>
-                    <div className="font-medium text-sm mb-1">{stat.label}</div>
-                    <div className="text-xs text-muted-foreground">{stat.description}</div>
-                  </CardContent>
-                </Card>
+                <div className="text-center bg-background/50 backdrop-blur-sm rounded-xl p-6 border border-border/50">
+                  <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
+                    <AnimatedNumber value={stat.value} />
+                  </div>
+                  <div className="font-medium text-sm text-foreground mb-1">{stat.label}</div>
+                  <div className="text-xs text-muted-foreground">{stat.description}</div>
+                </div>
               </motion.div>
             ))}
           </motion.div>
         </motion.div>
 
-        {/* Security Badges */}
-        <motion.div 
-          className="mb-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <h3 className="text-2xl font-semibold text-center mb-8">Security & Compliance</h3>
-          <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-6"
-            variants={cardContainerVariants}
-          >
-            {securityBadges.map((badge, index) => (
-              <motion.div key={index} custom={index} variants={cardVariants}>
-                <Card className="group transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                  <CardContent className="p-6 text-center">
-                    <div className="p-3 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors inline-flex mb-4">
-                      <badge.icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <div className="font-medium text-sm mb-1">{badge.label}</div>
-                    <div className="text-xs text-muted-foreground">{badge.description}</div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
-
-        {/* Technology Stack */}
+        {/* Trust Indicators */}
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ delay: 0.2 }}
+          className="space-y-8"
         >
-          <h3 className="text-2xl font-semibold text-center mb-8">Built with Enterprise Technology</h3>
-          <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-6"
-            variants={cardContainerVariants}
-          >
-            {techStack.map((tech, index) => (
-              <motion.div key={index} custom={index} variants={cardVariants}>
-                <Card className="group transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                  <CardContent className="p-6 text-center">
-                    <div className="p-3 rounded-full bg-muted group-hover:bg-muted/80 transition-colors inline-flex mb-4">
-                      <tech.icon className="w-6 h-6 text-foreground" />
-                    </div>
-                    <div className="font-medium text-sm mb-1">{tech.label}</div>
-                    <div className="text-xs text-muted-foreground">{tech.description}</div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
+          {/* Security & Compliance */}
+          <div className="text-center">
+            <p className="text-sm font-medium text-muted-foreground mb-4">Security & Compliance</p>
+            <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
+              {securityBadges.map((badge, index) => (
+                <motion.div 
+                  key={index}
+                  className="flex items-center gap-2 px-3 py-2 rounded-full bg-background/30 backdrop-blur-sm border border-border/30"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <badge.icon className="w-4 h-4 text-primary" />
+                  <span className="text-sm font-medium text-foreground">{badge.label}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Technology Stack */}
+          <div className="text-center">
+            <p className="text-sm font-medium text-muted-foreground mb-4">Built with Enterprise Technology</p>
+            <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
+              {techStack.map((tech, index) => (
+                <motion.div 
+                  key={index}
+                  className="flex items-center gap-2 px-3 py-2 rounded-full bg-background/30 backdrop-blur-sm border border-border/30"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 + 0.4 }}
+                >
+                  <tech.icon className="w-4 h-4 text-foreground" />
+                  <span className="text-sm font-medium text-foreground">{tech.label}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
