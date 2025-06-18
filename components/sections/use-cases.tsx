@@ -1,0 +1,171 @@
+'use client'
+
+import { Suspense } from 'react'
+import { UseCaseCard } from '@/components/cards/use-case-card'
+import { Skeleton } from '@/components/ui/skeleton'
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
+import { useCases } from '@/data/use-cases'
+import { cn } from '@/lib/utils'
+
+function UseCaseCardSkeleton() {
+  return (
+    <div className="space-y-6 p-6 h-[400px]">
+      <div className="flex items-start space-x-4">
+        <Skeleton className="h-14 w-14 rounded-2xl" />
+        <div className="flex-1 space-y-2">
+          <Skeleton className="h-6 w-40" />
+          <Skeleton className="h-4 w-32" />
+        </div>
+      </div>
+      <Skeleton className="h-16 w-full" />
+      <div className="space-y-3">
+        <Skeleton className="h-4 w-24" />
+        <div className="space-y-2">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="flex items-center space-x-2">
+              <Skeleton className="h-4 w-4 rounded-full" />
+              <Skeleton className="h-4 w-full" />
+            </div>
+          ))}
+        </div>
+      </div>
+      <Skeleton className="h-10 w-full rounded-md" />
+    </div>
+  )
+}
+
+function UseCasesGrid() {
+  return (
+    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+      {useCases.map((useCase, index) => (
+        <div
+          key={useCase.id}
+          className={cn(
+            "opacity-0 animate-fade-in-up",
+            "animation-delay-" + (index * 100)
+          )}
+          style={{ 
+            animationDelay: `${index * 100}ms`,
+            animationFillMode: 'forwards'
+          }}
+        >
+          <UseCaseCard useCase={useCase} />
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function UseCasesCarousel() {
+  return (
+    <div className="md:hidden">
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        className="w-full"
+      >
+        <CarouselContent className="-ml-2 md:-ml-4">
+          {useCases.map((useCase) => (
+            <CarouselItem key={useCase.id} className="pl-2 md:pl-4 basis-[85%] sm:basis-[70%]">
+              <UseCaseCard useCase={useCase} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="left-2" />
+        <CarouselNext className="right-2" />
+      </Carousel>
+    </div>
+  )
+}
+
+export function UseCases() {
+  return (
+    <section id="use-cases" className="relative py-24 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center rounded-full border border-border/50 bg-background/80 backdrop-blur-sm px-4 py-2 text-sm font-medium text-muted-foreground mb-4">
+            <span className="relative flex h-2 w-2 mr-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            Trusted Across Industries
+          </div>
+          
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl mb-4">
+            Built for{' '}
+            <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
+              Every Industry
+            </span>
+          </h2>
+          
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            From equipment rentals to healthcare facilities, our offline-first platform adapts to your unique business needs. 
+            Discover how leading companies across diverse industries transform their field operations.
+          </p>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden md:block">
+          <Suspense 
+            fallback={
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <UseCaseCardSkeleton key={i} />
+                ))}
+              </div>
+            }
+          >
+            <UseCasesGrid />
+          </Suspense>
+        </div>
+
+        {/* Mobile Carousel */}
+        <Suspense 
+          fallback={
+            <div className="md:hidden">
+              <div className="flex space-x-4 overflow-hidden">
+                {Array.from({ length: 2 }).map((_, i) => (
+                  <div key={i} className="w-[85%] flex-shrink-0">
+                    <UseCaseCardSkeleton />
+                  </div>
+                ))}
+              </div>
+            </div>
+          }
+        >
+          <UseCasesCarousel />
+        </Suspense>
+
+        {/* Bottom CTA */}
+        <div className="text-center mt-16">
+          <p className="text-muted-foreground mb-6">
+            Don&apos;t see your industry? Our platform adapts to any field operation.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="/demo" 
+              className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            >
+              Schedule a Demo
+            </a>
+            <a 
+              href="/industries" 
+              className="inline-flex items-center justify-center rounded-md border border-border bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            >
+              Explore All Industries
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

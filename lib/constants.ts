@@ -28,121 +28,47 @@ export const INDUSTRY_ROUTES = {
   CONSTRUCTION: '/industries/construction',
 } as const;
 
-// Features
-export const FEATURES = [
-  {
-    id: 'offline-first',
-    title: 'Never Lose Data Again',
-    description: 'Offline-first architecture ensures your data is always safe',
-    icon: 'shield-check',
-  },
-  {
-    id: 'custom-forms',
-    title: 'Your Forms, Your Way',
-    description: 'Dynamic form builder adapts to any workflow',
-    icon: 'form-input',
-  },
-  {
-    id: 'real-time-dashboard',
-    title: 'See Everything, Everywhere',
-    description: 'Real-time dashboard provides instant insights',
-    icon: 'dashboard',
-  },
-  {
-    id: 'media-capture',
-    title: 'Pictures Tell the Story',
-    description: 'Capture and manage photos, videos, and documents',
-    icon: 'camera',
-  },
-  {
-    id: 'smart-sync',
-    title: 'Always In Sync',
-    description: 'Intelligent synchronization when connectivity returns',
-    icon: 'refresh-cw',
-  },
-  {
-    id: 'white-label',
-    title: 'Your Brand, Not Ours',
-    description: 'Complete white-label customization options',
-    icon: 'palette',
-  },
-] as const;
-
-// Industries
+// Navigation-specific industry data (derived from use cases)
 export const INDUSTRIES = [
   {
     id: 'equipment-rental',
     name: 'Equipment Rental',
     slug: 'equipment-rental',
     description: 'Streamline pre/post rental inspections and damage documentation',
-    icon: 'truck',
-    useCases: [
-      'Pre/post rental inspections',
-      'Damage documentation',
-      'Maintenance tracking',
-    ],
   },
   {
     id: 'property-management',
     name: 'Property Management',
     slug: 'property-management',
     description: 'Efficient move-in/out inspections and maintenance requests',
-    icon: 'building',
-    useCases: [
-      'Move-in/move-out inspections',
-      'Maintenance requests',
-      'Safety compliance checks',
-    ],
   },
   {
     id: 'fleet-management',
     name: 'Fleet Management',
     slug: 'fleet-management',
     description: 'Comprehensive vehicle condition reports and driver inspections',
-    icon: 'car',
-    useCases: [
-      'Vehicle condition reports',
-      'Driver inspections',
-      'Incident documentation',
-    ],
   },
   {
     id: 'healthcare',
     name: 'Healthcare Facilities',
     slug: 'healthcare',
     description: 'Equipment maintenance logs and compliance audits',
-    icon: 'heart-pulse',
-    useCases: [
-      'Equipment maintenance logs',
-      'Safety inspections',
-      'Compliance audits',
-    ],
   },
   {
     id: 'agriculture',
     name: 'Agriculture',
     slug: 'agriculture',
     description: 'Crop inspections and quality assessments',
-    icon: 'wheat',
-    useCases: [
-      'Crop inspections',
-      'Equipment checks',
-      'Quality assessments',
-    ],
   },
   {
     id: 'construction',
     name: 'Construction',
     slug: 'construction',
     description: 'Site safety inspections and progress documentation',
-    icon: 'hard-hat',
-    useCases: [
-      'Site safety inspections',
-      'Equipment condition',
-      'Progress documentation',
-    ],
   },
 ] as const;
+
+
 
 // Benefits with metrics
 export const BENEFITS = [

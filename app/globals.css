@@ -256,6 +256,10 @@
   .animate-slide-up {
     animation: slideUp 0.3s ease-out;
   }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
   
   /* Backdrop blur utilities for modern UI */
   .backdrop-blur-xs {
@@ -273,5 +277,40 @@
   
   .shadow-strong {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.16);
+  }
+}
+
+/* 
+ * Keyframe Animations
+ * Custom animations for enhanced user experience
+ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
