@@ -1,6 +1,7 @@
 'use client'
 
 import { Suspense } from 'react'
+import { motion } from 'framer-motion'
 import { UseCaseCard } from '@/components/cards/use-case-card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { 
@@ -11,7 +12,38 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel'
 import { useCases } from '@/data/use-cases'
-import { cn } from '@/lib/utils'
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 60,
+    scale: 0.9,
+    rotateX: -20
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    scale: 1,
+    rotateX: 0,
+    transition: {
+      type: "spring" as const,
+      damping: 15,
+      stiffness: 120,
+      mass: 1
+    }
+  }
+};
 
 function UseCaseCardSkeleton() {
   return (
@@ -42,23 +74,22 @@ function UseCaseCardSkeleton() {
 
 function UseCasesGrid() {
   return (
-    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
-      {useCases.map((useCase, index) => (
-        <div
+    <motion.div 
+      className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      {useCases.map((useCase) => (
+        <motion.div
           key={useCase.id}
-          className={cn(
-            "opacity-0 animate-fade-in-up",
-            "animation-delay-" + (index * 100)
-          )}
-          style={{ 
-            animationDelay: `${index * 100}ms`,
-            animationFillMode: 'forwards'
-          }}
+          variants={itemVariants}
         >
           <UseCaseCard useCase={useCase} />
-        </div>
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   )
 }
 
@@ -91,7 +122,13 @@ export function UseCases() {
     <section id="use-cases" className="relative py-24">
       <div className="container-wide">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="inline-flex items-center rounded-full border border-border/50 bg-background/80 backdrop-blur-sm px-4 py-2 text-sm font-medium text-muted-foreground mb-4">
             <span className="relative flex h-2 w-2 mr-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -111,7 +148,7 @@ export function UseCases() {
             From equipment rentals to healthcare facilities, our offline-first platform adapts to your unique business needs. 
             Discover how leading companies across diverse industries transform their field operations.
           </p>
-        </div>
+        </motion.div>
 
         {/* Desktop Grid */}
         <div className="hidden md:block">

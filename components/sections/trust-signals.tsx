@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { 
   Shield, 
   Lock, 
@@ -14,6 +15,36 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { TRUST_SIGNALS } from "@/lib/constants";
 
+const cardContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 30,
+    scale: 0.95
+  },
+  visible: (index: number) => ({ 
+    opacity: 1, 
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring" as const,
+      damping: 20,
+      stiffness: 100,
+      delay: index * 0.1 // Professional staggered reveal
+    }
+  })
+};
+
 interface AnimatedNumberProps {
   value: string;
   duration?: number;
@@ -21,13 +52,24 @@ interface AnimatedNumberProps {
 
 function AnimatedNumber({ value, duration = 2000 }: AnimatedNumberProps) {
   const [displayValue, setDisplayValue] = useState("0");
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef(null);
+  const inView = useInView(ref, { 
+    once: true,
+    amount: 0.5
+  });
   
   useEffect(() => {
-    // Extract numeric value from string (e.g., "500+" -> 500)
-    const numericValue = parseInt(value.replace(/[^0-9]/g, ''), 10);
+    // Only animate when in view and hasn't animated before
+    if (!inView || hasAnimated) return;
+    
+    // Extract numeric value from string, supporting decimals (e.g., "99.9%" -> 99.9, "500+" -> 500)
+    const numericMatch = value.match(/[\d.]+/);
+    const numericValue = numericMatch ? parseFloat(numericMatch[0]) : NaN;
     
     if (isNaN(numericValue)) {
       setDisplayValue(value);
+      setHasAnimated(true);
       return;
     }
     
@@ -40,22 +82,26 @@ function AnimatedNumber({ value, duration = 2000 }: AnimatedNumberProps) {
       
       // Use easing function for smooth animation
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      const currentValue = Math.floor(startValue + (numericValue - startValue) * easeOutQuart);
+      const currentValue = startValue + (numericValue - startValue) * easeOutQuart;
       
-      // Preserve original formatting
-      const suffix = value.replace(/[0-9]/g, '').replace(/\s+/g, '');
-      setDisplayValue(`${currentValue}${suffix}`);
+      // Preserve original formatting and decimal places if present
+      const suffix = value.replace(/[\d.]+/g, '').replace(/\s+/g, '');
+      const hasDecimal = value.includes('.');
+      const formattedValue = hasDecimal ? currentValue.toFixed(1) : Math.floor(currentValue).toString();
+      setDisplayValue(`${formattedValue}${suffix}`);
       
       if (progress < 1) {
         requestAnimationFrame(animate);
+      } else {
+        setHasAnimated(true);
       }
     };
     
     const timer = setTimeout(animate, 100);
     return () => clearTimeout(timer);
-  }, [value, duration]);
+  }, [value, duration, inView, hasAnimated]);
   
-  return <span>{displayValue}</span>;
+  return <span ref={ref}>{displayValue}</span>;
 }
 
 const securityBadges = [
@@ -132,7 +178,18 @@ export function TrustSignals() {
     <section className="py-24 bg-gradient-to-b from-muted/30 to-muted/50">
       <div className="container-wide">
         {/* Header */}
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ 
+            type: "spring" as const,
+            damping: 25,
+            stiffness: 120,
+            duration: 0.6
+          }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Trusted by Businesses Worldwide
           </h2>
@@ -140,60 +197,89 @@ export function TrustSignals() {
             Built with enterprise-grade security, proven reliability, and the technology 
             stack that powers mission-critical operations.
           </p>
-        </div>
+        </motion.div>
 
         {/* Statistics */}
-        <div className="mb-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <motion.div 
+          className="mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+            variants={cardContainerVariants}
+          >
             {statistics.map((stat, index) => (
-              <Card key={index} className="text-center">
-                <CardContent className="p-6">
-                  <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
-                    <AnimatedNumber value={stat.value} />
-                  </div>
-                  <div className="font-medium text-sm mb-1">{stat.label}</div>
-                  <div className="text-xs text-muted-foreground">{stat.description}</div>
-                </CardContent>
-              </Card>
+              <motion.div key={index} custom={index} variants={cardVariants}>
+                <Card className="text-center">
+                  <CardContent className="p-6">
+                    <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
+                      <AnimatedNumber value={stat.value} />
+                    </div>
+                    <div className="font-medium text-sm mb-1">{stat.label}</div>
+                    <div className="text-xs text-muted-foreground">{stat.description}</div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Security Badges */}
-        <div className="mb-16">
+        <motion.div 
+          className="mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <h3 className="text-2xl font-semibold text-center mb-8">Security & Compliance</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+            variants={cardContainerVariants}
+          >
             {securityBadges.map((badge, index) => (
-              <Card key={index} className="group transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                <CardContent className="p-6 text-center">
-                  <div className="p-3 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors inline-flex mb-4">
-                    <badge.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <div className="font-medium text-sm mb-1">{badge.label}</div>
-                  <div className="text-xs text-muted-foreground">{badge.description}</div>
-                </CardContent>
-              </Card>
+              <motion.div key={index} custom={index} variants={cardVariants}>
+                <Card className="group transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                  <CardContent className="p-6 text-center">
+                    <div className="p-3 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors inline-flex mb-4">
+                      <badge.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div className="font-medium text-sm mb-1">{badge.label}</div>
+                    <div className="text-xs text-muted-foreground">{badge.description}</div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Technology Stack */}
-        <div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <h3 className="text-2xl font-semibold text-center mb-8">Built with Enterprise Technology</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+            variants={cardContainerVariants}
+          >
             {techStack.map((tech, index) => (
-              <Card key={index} className="group transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                <CardContent className="p-6 text-center">
-                  <div className="p-3 rounded-full bg-muted group-hover:bg-muted/80 transition-colors inline-flex mb-4">
-                    <tech.icon className="w-6 h-6 text-foreground" />
-                  </div>
-                  <div className="font-medium text-sm mb-1">{tech.label}</div>
-                  <div className="text-xs text-muted-foreground">{tech.description}</div>
-                </CardContent>
-              </Card>
+              <motion.div key={index} custom={index} variants={cardVariants}>
+                <Card className="group transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                  <CardContent className="p-6 text-center">
+                    <div className="p-3 rounded-full bg-muted group-hover:bg-muted/80 transition-colors inline-flex mb-4">
+                      <tech.icon className="w-6 h-6 text-foreground" />
+                    </div>
+                    <div className="font-medium text-sm mb-1">{tech.label}</div>
+                    <div className="text-xs text-muted-foreground">{tech.description}</div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

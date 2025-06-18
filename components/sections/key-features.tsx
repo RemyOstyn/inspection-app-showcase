@@ -1,4 +1,6 @@
+"use client";
 import { Suspense } from 'react'
+import { motion } from 'framer-motion'
 import { FeatureCard } from '@/components/cards/feature-card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { features } from '@/data/features'
@@ -18,13 +20,56 @@ function FeatureCardSkeleton() {
   )
 }
 
+const gridVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const featureVariants = {
+  hidden: (index: number) => ({ 
+    opacity: 0, 
+    y: 50,
+    x: (index % 3 - 1) * 30, // Wave effect based on column position
+    scale: 0.95
+  }),
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    x: 0,
+    scale: 1,
+    transition: {
+      type: "spring" as const,
+      damping: 18,
+      stiffness: 150
+    }
+  }
+};
+
 function FeaturesGrid() {
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {features.map((feature) => (
-        <FeatureCard key={feature.id} feature={feature} />
+    <motion.div 
+      className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+      variants={gridVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+    >
+      {features.map((feature, index) => (
+        <motion.div
+          key={feature.id}
+          custom={index}
+          variants={featureVariants}
+        >
+          <FeatureCard feature={feature} />
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   )
 }
 
@@ -32,7 +77,13 @@ export function KeyFeatures() {
   return (
     <section id="key-features" className="relative py-24">
       <div className="container-wide bg-muted/30 rounded-3xl py-16">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             Everything You Need to{' '}
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
@@ -43,7 +94,7 @@ export function KeyFeatures() {
             Our platform delivers powerful features designed for real-world field operations. 
             From offline data collection to seamless synchronization, we&apos;ve got you covered.
           </p>
-        </div>
+        </motion.div>
 
         <Suspense 
           fallback={
