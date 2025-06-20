@@ -8,7 +8,7 @@ export const ROUTES = {
   HOME: '/',
   FEATURES: '/features',
   INDUSTRIES: '/industries',
-  PRICING: '/pricing',
+  PRICING: '#pricing',
   DEMO: '/demo',
   CONTACT: '/contact',
   RESOURCES: '/resources',

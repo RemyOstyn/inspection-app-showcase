@@ -119,7 +119,7 @@ function UseCasesCarousel() {
 
 export function UseCases() {
   return (
-    <section id="use-cases" className="relative py-12 bg-muted/50">
+    <section id="use-cases" className="relative py-24 bg-muted/50">
       <div className="container-wide">
         {/* Section Header */}
         <motion.div 

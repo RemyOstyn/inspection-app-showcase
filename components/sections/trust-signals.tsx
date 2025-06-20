@@ -174,7 +174,7 @@ const statistics = [
 
 export function TrustSignals() {
   return (
-    <section className="py-12 bg-muted/50">
+    <section className="py-24 bg-muted/50">
       <div className="container-wide">
         {/* Header */}
         <motion.div 

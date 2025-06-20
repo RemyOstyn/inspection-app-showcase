@@ -14,7 +14,7 @@ export function Pricing() {
   const [isAnnual, setIsAnnual] = useState(false)
 
   return (
-    <section className="py-12 from-muted/20 to-muted/40">
+    <section id="pricing" className="py-24 from-muted/20 to-muted/40">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <motion.div
