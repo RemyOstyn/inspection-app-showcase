@@ -99,7 +99,7 @@ export function Pricing() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
-                  <Link href="/white-label">
+                  <Link href="/partners">
                     Learn More
                   </Link>
                 </Button>

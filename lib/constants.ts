@@ -6,10 +6,10 @@ export const APP_DESCRIPTION = 'Transform your field operations with an offline-
 // Routes
 export const ROUTES = {
   HOME: '/',
-  FEATURES: '/features',
-  INDUSTRIES: '/industries',
+  FEATURES: '#key-features',
+  INDUSTRIES: '#use-cases',
   PRICING: '#pricing',
-  DEMO: '/demo',
+  DEMO: '#product-showcase',
   CONTACT: '/contact',
   RESOURCES: '/resources',
   PARTNERS: '/partners',
@@ -18,55 +18,6 @@ export const ROUTES = {
   TERMS: '/terms',
 } as const;
 
-// Industry routes
-export const INDUSTRY_ROUTES = {
-  EQUIPMENT_RENTAL: '/industries/equipment-rental',
-  PROPERTY_MANAGEMENT: '/industries/property-management',
-  FLEET_MANAGEMENT: '/industries/fleet-management',
-  HEALTHCARE: '/industries/healthcare',
-  AGRICULTURE: '/industries/agriculture',
-  CONSTRUCTION: '/industries/construction',
-} as const;
-
-// Navigation-specific industry data (derived from use cases)
-export const INDUSTRIES = [
-  {
-    id: 'equipment-rental',
-    name: 'Equipment Rental',
-    slug: 'equipment-rental',
-    description: 'Streamline pre/post rental inspections and damage documentation',
-  },
-  {
-    id: 'property-management',
-    name: 'Property Management',
-    slug: 'property-management',
-    description: 'Efficient move-in/out inspections and maintenance requests',
-  },
-  {
-    id: 'fleet-management',
-    name: 'Fleet Management',
-    slug: 'fleet-management',
-    description: 'Comprehensive vehicle condition reports and driver inspections',
-  },
-  {
-    id: 'healthcare',
-    name: 'Healthcare Facilities',
-    slug: 'healthcare',
-    description: 'Equipment maintenance logs and compliance audits',
-  },
-  {
-    id: 'agriculture',
-    name: 'Agriculture',
-    slug: 'agriculture',
-    description: 'Crop inspections and quality assessments',
-  },
-  {
-    id: 'construction',
-    name: 'Construction',
-    slug: 'construction',
-    description: 'Site safety inspections and progress documentation',
-  },
-] as const;
 
 
 

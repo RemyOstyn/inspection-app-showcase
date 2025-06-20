@@ -189,17 +189,17 @@ export function UseCases() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="/demo" 
+              href="/contact" 
               className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             >
               Schedule a Demo
             </a>
-            <a 
+            {/* <a 
               href="/industries" 
               className="inline-flex items-center justify-center rounded-md border border-border bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             >
               Explore All Industries
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

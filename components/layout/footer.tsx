@@ -8,7 +8,6 @@ import { Separator } from "@/components/ui/separator";
 import { 
   APP_NAME, 
   ROUTES, 
-  INDUSTRY_ROUTES, 
   CONTACT, 
   SOCIAL_LINKS 
 } from "@/lib/constants";
@@ -41,21 +40,16 @@ export function Footer() {
   ];
 
   const industryLinks = [
-    { name: "Equipment Rental", href: INDUSTRY_ROUTES.EQUIPMENT_RENTAL },
-    { name: "Property Management", href: INDUSTRY_ROUTES.PROPERTY_MANAGEMENT },
-    { name: "Fleet Management", href: INDUSTRY_ROUTES.FLEET_MANAGEMENT },
-    { name: "Healthcare", href: INDUSTRY_ROUTES.HEALTHCARE },
-    { name: "Agriculture", href: INDUSTRY_ROUTES.AGRICULTURE },
-    { name: "Construction", href: INDUSTRY_ROUTES.CONSTRUCTION },
+    { name: "Equipment Rental", href: "/#use-cases" },
+    { name: "Property Management", href: "/#use-cases" },
+    { name: "Fleet Management", href: "/#use-cases" },
+    { name: "Healthcare", href: "/#use-cases" },
+    { name: "Agriculture", href: "/#use-cases" },
+    { name: "Construction", href: "/#use-cases" },
   ];
 
   const resourceLinks = [
-    { name: "Documentation", href: "/docs" },
-    { name: "API Reference", href: "/api-docs" },
-    { name: "Blog", href: "/blog" },
-    { name: "Help Center", href: "/help" },
-    { name: "Community", href: "/community" },
-    { name: "Status", href: "/status" },
+    { name: "Case Studies", href: ROUTES.CASE_STUDIES },
   ];
 
   const legalLinks = [

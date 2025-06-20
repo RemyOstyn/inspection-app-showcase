@@ -14,8 +14,8 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-import { ROUTES, INDUSTRIES, APP_NAME } from "@/lib/constants";
-import { MenuIcon, ChevronRightIcon, ChevronDownIcon } from "lucide-react";
+import { ROUTES, APP_NAME } from "@/lib/constants";
+import { MenuIcon } from "lucide-react";
 
 const navigationItems = [
   {
@@ -25,11 +25,6 @@ const navigationItems = [
   {
     title: "Industries",
     href: ROUTES.INDUSTRIES,
-    hasDropdown: true,
-    items: INDUSTRIES.map((industry) => ({
-      title: industry.name,
-      href: `/industries/${industry.slug}`,
-    })),
   },
   {
     title: "Pricing",
@@ -51,20 +46,10 @@ const navigationItems = [
 
 export function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const [expandedItems, setExpandedItems] = useState<string[]>([]);
   const pathname = usePathname();
-
-  const toggleExpanded = (title: string) => {
-    setExpandedItems((prev) =>
-      prev.includes(title)
-        ? prev.filter((item) => item !== title)
-        : [...prev, title]
-    );
-  };
 
   const closeSheet = () => {
     setIsOpen(false);
-    setExpandedItems([]);
   };
 
   return (
@@ -86,72 +71,18 @@ export function MobileNavigation() {
         
         <div className="mt-6 flex flex-col space-y-2">
           {navigationItems.map((item) => (
-            <div key={item.title}>
-              {item.hasDropdown ? (
-                <>
-                  <button
-                    onClick={() => toggleExpanded(item.title)}
-                    className={cn(
-                      "flex w-full items-center justify-between rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
-                      pathname.startsWith(item.href) && "bg-accent/50"
-                    )}
-                    aria-expanded={expandedItems.includes(item.title)}
-                  >
-                    <span>{item.title}</span>
-                    {expandedItems.includes(item.title) ? (
-                      <ChevronDownIcon className="h-4 w-4" />
-                    ) : (
-                      <ChevronRightIcon className="h-4 w-4" />
-                    )}
-                  </button>
-                  
-                  {expandedItems.includes(item.title) && (
-                    <div className="ml-4 mt-2 space-y-2">
-                      <SheetClose asChild>
-                        <Link
-                          href={item.href}
-                          onClick={closeSheet}
-                          className={cn(
-                            "block rounded-md px-3 py-2 text-sm transition-colors hover:bg-accent hover:text-accent-foreground",
-                            pathname === item.href && "bg-accent/50"
-                          )}
-                        >
-                          All {item.title}
-                        </Link>
-                      </SheetClose>
-                      
-                      {item.items?.map((subItem) => (
-                        <SheetClose key={subItem.title} asChild>
-                          <Link
-                            href={subItem.href}
-                            onClick={closeSheet}
-                            className={cn(
-                              "block rounded-md px-3 py-2 text-sm transition-colors hover:bg-accent hover:text-accent-foreground",
-                              pathname === subItem.href && "bg-accent/50"
-                            )}
-                          >
-                            {subItem.title}
-                          </Link>
-                        </SheetClose>
-                      ))}
-                    </div>
-                  )}
-                </>
-              ) : (
-                <SheetClose asChild>
-                  <Link
-                    href={item.href}
-                    onClick={closeSheet}
-                    className={cn(
-                      "block rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
-                      pathname === item.href && "bg-accent/50"
-                    )}
-                  >
-                    {item.title}
-                  </Link>
-                </SheetClose>
-              )}
-            </div>
+            <SheetClose key={item.title} asChild>
+              <Link
+                href={item.href}
+                onClick={closeSheet}
+                className={cn(
+                  "block rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
+                  pathname === item.href && "bg-accent/50"
+                )}
+              >
+                {item.title}
+              </Link>
+            </SheetClose>
           ))}
           
           <Separator className="my-4" />

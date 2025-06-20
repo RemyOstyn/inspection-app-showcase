@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { handleAnchorNavigation } from "@/lib/navigation-utils";
+import { BookOpen, FileText, Users, MessageCircle } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,7 +13,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { ROUTES, INDUSTRIES } from "@/lib/constants";
+import { ROUTES } from "@/lib/constants";
 
 const navigationItems = [
   {
@@ -21,12 +23,10 @@ const navigationItems = [
   {
     title: "Industries",
     href: ROUTES.INDUSTRIES,
-    hasDropdown: true,
-    items: INDUSTRIES.map((industry) => ({
-      title: industry.name,
-      href: `/industries/${industry.slug}`,
-      description: industry.description,
-    })),
+  },
+  {
+    title: "Demo",
+    href: ROUTES.DEMO,
   },
   {
     title: "Pricing",
@@ -40,17 +40,20 @@ const navigationItems = [
       {
         title: "Case Studies",
         href: ROUTES.CASE_STUDIES,
-        description: "See how companies transform their operations",
+        description: "Real stories from our clients and their success",
+        icon: FileText,
       },
       {
         title: "Partners",
         href: ROUTES.PARTNERS,
-        description: "Join our white-label partner program",
+        description: "White-label program for agencies and resellers",
+        icon: Users,
       },
       {
         title: "Contact",
         href: ROUTES.CONTACT,
         description: "Get in touch with our team",
+        icon: MessageCircle,
       },
     ],
   },
@@ -77,33 +80,43 @@ export function Navigation() {
                 <NavigationMenuContent>
                   <div className="grid gap-3 p-6 w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                     <div className="row-span-3">
-                      <NavigationMenuLink asChild>
-                        <Link
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                          href={item.href}
-                        >
-                          <div className="mb-2 mt-4 text-lg font-medium">
+                      <div className="flex h-full w-full select-none flex-col justify-between rounded-xl bg-gradient-to-br from-primary/10 via-primary/5 to-background border border-primary/20 p-6">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="p-2 bg-primary/10 rounded-lg">
+                            <BookOpen className="h-6 w-6 text-primary" />
+                          </div>
+                          <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-md">
+                            Resources Hub
+                          </span>
+                        </div>
+                        <div>
+                          <div className="text-lg font-semibold mb-2">
                             {item.title}
                           </div>
-                          <p className="text-sm leading-tight text-muted-foreground">
+                          <p className="text-sm leading-relaxed text-muted-foreground">
                             {item.title === "Industries"
                               ? "Discover how our platform serves your industry"
-                              : "Explore our resources and partnerships"}
+                              : "Everything you need to succeed with our platform. From real client stories to partnership opportunities."}
                           </p>
-                        </Link>
-                      </NavigationMenuLink>
+                        </div>
+                      </div>
                     </div>
-                    <div className="grid gap-2">
+                    <div className="grid gap-1">
                       {item.items?.map((subItem) => (
                         <NavigationMenuLink key={subItem.title} asChild>
                           <Link
-                            href={subItem.href}
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            href={handleAnchorNavigation(subItem.href, pathname)}
+                            className="group block select-none rounded-lg p-3 leading-none no-underline outline-none transition-all hover:bg-accent/50 hover:shadow-sm focus:bg-accent focus:text-accent-foreground"
                           >
-                            <div className="text-sm font-medium leading-none">
-                              {subItem.title}
+                            <div className="flex items-center gap-3 mb-2">
+                              <div className="p-1.5 bg-muted rounded-md group-hover:bg-primary/10 transition-colors">
+                                <subItem.icon className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                              </div>
+                              <div className="text-sm font-medium leading-none">
+                                {subItem.title}
+                              </div>
                             </div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            <p className="line-clamp-2 text-xs leading-relaxed text-muted-foreground ml-8">
                               {subItem.description}
                             </p>
                           </Link>
@@ -116,7 +129,7 @@ export function Navigation() {
             ) : (
               <NavigationMenuLink asChild>
                 <Link
-                  href={item.href}
+                  href={handleAnchorNavigation(item.href, pathname)}
                   className={cn(
                     "group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
                     pathname === item.href && "bg-accent/50"
