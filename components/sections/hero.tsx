@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ChevronDown, Shield, Zap, Users, CheckCircle } from "lucide-react"
+import { ChevronDown, Zap, Users, CheckCircle } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
@@ -33,8 +33,8 @@ export function Hero() {
           >
             {/* Trust indicator badge */}
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
-              <Shield className="w-4 h-4" />
-              Trusted by 500+ companies worldwide
+              <CheckCircle className="w-4 h-4" />
+              Working Demo Available
             </div>
 
             {/* Main headline */}
@@ -48,7 +48,7 @@ export function Hero() {
             {/* Subheadline */}
             <p className="text-lg text-muted-foreground sm:text-xl max-w-xl">
               Transform your inspections with an offline-first platform that adapts to your business. 
-              No connectivity required. Fully customizable. Enterprise-ready.
+              No connectivity required. Fully customizable. Ready to scale.
             </p>
 
             {/* Key benefits */}
@@ -70,21 +70,16 @@ export function Hero() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="min-w-[180px] bg-primary hover:bg-primary/90" asChild>
-                <Link href="/demo">
-                  See It In Action
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" className="min-w-[180px]" asChild>
-                <Link href="/use-cases">
-                  Explore Use Cases
+                <Link href="#contact">
+                  Request a Demo
                 </Link>
               </Button>
             </div>
 
             {/* Social proof */}
             <div className="pt-4 text-sm text-muted-foreground">
-              <p className="font-medium">10 million+ inspections completed</p>
-              <p className="mt-1">Used across 50+ countries</p>
+              <p className="font-medium">Built for real-world field operations</p>
+              <p className="mt-1">Schedule a personalized demo today</p>
             </div>
           </motion.div>
 
@@ -111,12 +106,12 @@ export function Hero() {
                     </div>
                     <div className="space-y-2">
                       <div className="flex justify-between items-center">
-                        <span className="text-sm">Completed Today</span>
-                        <span className="font-semibold">247</span>
+                        <span className="text-sm">Demo Inspections</span>
+                        <span className="font-semibold">5</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-sm">Pending Review</span>
-                        <span className="font-semibold">12</span>
+                        <span className="text-sm">Forms Available</span>
+                        <span className="font-semibold">3</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-sm">Sync Status</span>
