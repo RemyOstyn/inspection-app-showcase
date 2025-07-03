@@ -49,8 +49,16 @@ export function Header() {
         {/* CTA Button, Theme Toggle & Mobile Menu */}
         <div className="flex items-center space-x-2">
           <ModeToggle />
-          <Button asChild className="hidden sm:inline-flex">
-            <Link href={ROUTES.DEMO}>Schedule Demo</Link>
+          <Button 
+            className="hidden sm:inline-flex"
+            onClick={() => {
+              const element = document.querySelector('#contact');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            Request Demo
           </Button>
           
           {/* Mobile Navigation */}

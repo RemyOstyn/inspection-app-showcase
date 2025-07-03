@@ -240,16 +240,16 @@ export function ProductShowcase() {
                     </div>
                     <div className="grid grid-cols-3 gap-4 mb-6">
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">500+</div>
-                        <div className="text-sm text-muted-foreground">Inspections</div>
+                        <div className="text-2xl font-bold text-primary">12</div>
+                        <div className="text-sm text-muted-foreground">Demo Forms</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-green-600">98%</div>
-                        <div className="text-sm text-muted-foreground">Completion</div>
+                        <div className="text-2xl font-bold text-green-600">100%</div>
+                        <div className="text-sm text-muted-foreground">Offline Ready</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-blue-600">24</div>
-                        <div className="text-sm text-muted-foreground">Active Users</div>
+                        <div className="text-2xl font-bold text-blue-600">3</div>
+                        <div className="text-sm text-muted-foreground">Test Users</div>
                       </div>
                     </div>
                   </CardContent>
