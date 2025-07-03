@@ -44,30 +44,22 @@ const benefits = [
   {
     icon: Shield,
     title: "Reduce Operational Risk",
-    description: "Eliminate missed inspections and ensure complete data capture with offline-first technology that works anywhere, anytime.",
-    statistic: "60%",
-    statLabel: "Reduction in missed inspections"
+    description: "Eliminate missed inspections and ensure complete data capture with offline-first technology that works anywhere, anytime."
   },
   {
     icon: Zap,
     title: "Increase Efficiency", 
-    description: "Streamline your inspection process with smart forms, automated workflows, and instant report generation.",
-    statistic: "80%",
-    statLabel: "Faster inspection completion"
+    description: "Streamline your inspection process with smart forms, automated workflows, and instant report generation."
   },
   {
     icon: CheckCircle,
     title: "Improve Compliance",
-    description: "Maintain perfect audit trails with timestamped records, digital signatures, and automated compliance reporting.",
-    statistic: "100%",
-    statLabel: "Complete audit trail"
+    description: "Maintain perfect audit trails with timestamped records, digital signatures, and automated compliance reporting."
   },
   {
     icon: TrendingUp,
     title: "Scale Operations",
-    description: "Support unlimited users across multiple locations with enterprise-grade infrastructure that grows with your business.",
-    statistic: "1000+",
-    statLabel: "Concurrent users supported"
+    description: "Support unlimited users across multiple locations with enterprise-grade infrastructure that grows with your business."
   }
 ];
 
@@ -91,8 +83,8 @@ export function Benefits() {
             Transform Your Business Operations
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            See measurable improvements in efficiency, compliance, and operational excellence 
-            with our proven inspection platform.
+            Discover how our inspection platform delivers real value 
+            to your business operations.
           </p>
         </motion.div>
         
@@ -113,8 +105,6 @@ export function Benefits() {
                 icon={benefit.icon}
                 title={benefit.title}
                 description={benefit.description}
-                statistic={benefit.statistic}
-                statLabel={benefit.statLabel}
               />
             </motion.div>
           ))}

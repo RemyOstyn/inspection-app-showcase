@@ -5,9 +5,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
+import Image from 'next/image'
 import { 
   Smartphone, 
-  LayoutDashboard, 
   Palette, 
   CheckCircle, 
   Camera, 
@@ -89,26 +89,36 @@ const customizationOptions = [
   }
 ]
 
-const screenshots = [
+const mobileScreenshots = [
   {
     title: "Dashboard Overview",
     description: "Real-time inspection status and team performance metrics",
-    type: "dashboard"
+    src: "/images/mobile/mobile_dashboard-portrait.png",
+    alt: "Mobile dashboard showing inspection overview, quick actions, and recent activity"
   },
   {
-    title: "Form Builder",
-    description: "Drag-and-drop interface for creating custom inspection forms",
-    type: "form-builder"
+    title: "Form Progress",
+    description: "Visual progress tracking with sectioned completion status",
+    src: "/images/mobile/mobile_form_progress-portrait.png",
+    alt: "Mobile form progress screen showing section completion and progress bars"
   },
   {
-    title: "Mobile App",
-    description: "Offline-first mobile interface for field inspections",
-    type: "mobile"
+    title: "Dynamic Forms",
+    description: "Custom inspection forms with media capture capabilities",
+    src: "/images/mobile/mobile_form-portrait.png",
+    alt: "Mobile form interface showing field inputs and media capture"
   },
   {
-    title: "Analytics View",
-    description: "Comprehensive reporting and data visualization tools",
-    type: "analytics"
+    title: "Media Comments",
+    description: "Rich media annotation and commenting system",
+    src: "/images/mobile/mobile_media_comment-portrait.png",
+    alt: "Mobile media comment interface for adding notes to captured images"
+  },
+  {
+    title: "Inspection Categories",
+    description: "Organized inspection workflows by category",
+    src: "/images/mobile/mobile_form_groups-portrait.png",
+    alt: "Mobile inspection categories screen showing biosecurity inspection options"
   }
 ]
 
@@ -197,17 +207,19 @@ export function ProductShowcase() {
               <div className="relative">
                 <Carousel className="w-full max-w-md mx-auto">
                   <CarouselContent>
-                    {screenshots.filter(s => s.type === 'mobile' || s.type === 'dashboard').map((screenshot, index) => (
+                    {mobileScreenshots.map((screenshot, index) => (
                       <CarouselItem key={index}>
                         <Card className="border-0 shadow-xl">
                           <CardContent className="p-6">
-                            <div className="aspect-[9/16] bg-gradient-to-br from-primary/5 to-primary/20 rounded-lg flex items-center justify-center mb-4">
-                              <div className="text-center space-y-2">
-                                <Smartphone className="h-12 w-12 text-primary mx-auto" />
-                                <p className="text-sm font-medium text-primary">
-                                  {screenshot.title}
-                                </p>
-                              </div>
+                            <div className="aspect-[3/5] bg-gradient-to-br from-primary/5 to-primary/20 rounded-lg overflow-hidden mb-4 flex items-center justify-center">
+                              <Image
+                                src={screenshot.src}
+                                alt={screenshot.alt}
+                                width={300}
+                                height={500}
+                                className="w-full h-full object-contain"
+                                priority={index === 0}
+                              />
                             </div>
                             <h4 className="font-semibold text-center mb-2">{screenshot.title}</h4>
                             <p className="text-sm text-muted-foreground text-center">
@@ -229,28 +241,22 @@ export function ProductShowcase() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="relative order-2 lg:order-1">
                 <Card className="shadow-xl border-0">
-                  <CardContent className="p-8">
-                    <div className="aspect-video bg-gradient-to-br from-primary/5 to-primary/20 rounded-lg flex items-center justify-center mb-6">
-                      <div className="text-center space-y-2">
-                        <LayoutDashboard className="h-16 w-16 text-primary mx-auto" />
-                        <p className="text-lg font-medium text-primary">
-                          Admin Dashboard
-                        </p>
-                      </div>
+                  <CardContent className="p-4">
+                    <div className="aspect-video bg-gradient-to-br from-primary/5 to-primary/20 rounded-lg overflow-hidden mb-4">
+                      <Image
+                        src="/images/web_dashboard.png"
+                        alt="Admin dashboard showing inspection overview, navigation menu, and recent inspection activity"
+                        width={800}
+                        height={450}
+                        className="w-full h-full object-cover rounded-lg"
+                        priority
+                      />
                     </div>
-                    <div className="grid grid-cols-3 gap-4 mb-6">
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">12</div>
-                        <div className="text-sm text-muted-foreground">Demo Forms</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-green-600">100%</div>
-                        <div className="text-sm text-muted-foreground">Offline Ready</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-blue-600">3</div>
-                        <div className="text-sm text-muted-foreground">Test Users</div>
-                      </div>
+                    <div className="text-center">
+                      <h4 className="font-semibold text-lg mb-2">Admin Dashboard</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Complete overview of inspection activities, team performance, and system status
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -335,33 +341,6 @@ export function ProductShowcase() {
               ))}
             </div>
 
-            <div className="mt-12 p-8 bg-gradient-to-r from-primary/5 to-primary/10 rounded-2xl">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <h4 className="text-xl font-bold text-foreground mb-3">
-                    Before & After Transformation
-                  </h4>
-                  <p className="text-muted-foreground mb-4">
-                    See how our platform adapts to different brands and industries. 
-                    From equipment rental to healthcare facilities, every deployment 
-                    feels native to your business.
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="outline">Custom Branding</Badge>
-                    <Badge variant="outline">Industry Templates</Badge>
-                    <Badge variant="outline">Workflow Automation</Badge>
-                  </div>
-                </div>
-                <div className="aspect-video bg-gradient-to-br from-primary/10 to-primary/30 rounded-lg flex items-center justify-center">
-                  <div className="text-center space-y-2">
-                    <Palette className="h-12 w-12 text-primary mx-auto" />
-                    <p className="text-sm font-medium text-primary">
-                      Customization Preview
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </TabsContent>
         </Tabs>
       </div>

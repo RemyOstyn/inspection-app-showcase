@@ -71,15 +71,15 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="min-w-[180px] bg-primary hover:bg-primary/90" asChild>
                 <Link href="#contact">
-                  Request a Demo
+                  Request Demo
                 </Link>
               </Button>
             </div>
 
             {/* Social proof */}
             <div className="pt-4 text-sm text-muted-foreground">
-              <p className="font-medium">Built for real-world field operations</p>
-              <p className="mt-1">Schedule a personalized demo today</p>
+              <p className="font-medium">✓ Trusted by field teams in 20+ industries</p>
+              <p className="mt-1">⚡ Working demo available • Demo ready in 1 day</p>
             </div>
           </motion.div>
 
@@ -136,7 +136,7 @@ export function Hero() {
             className="group flex flex-col items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
             aria-label="Scroll to features"
           >
-            <span className="text-sm">Discover More</span>
+            <span className="text-sm">Explore Features</span>
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}

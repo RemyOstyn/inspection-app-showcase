@@ -244,17 +244,30 @@ export function ComingSoon({
               While we&apos;re building this feature, explore what&apos;s already available and see how we can help your business today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild className="group">
-                <Link href="/contact">
-                  Schedule a Demo
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
+              <Button 
+                size="lg" 
+                className="group"
+                onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
+                Request Demo
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button size="lg" variant="outline" asChild className="group">
-                <Link href="/case-studies">
-                  View Case Studies
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="group"
+                onClick={() => {
+                  // Scroll to home page since case studies are not available
+                  window.location.href = '/';
+                }}
+              >
+                Back to Home
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </div>
           </motion.div>

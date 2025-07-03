@@ -4,8 +4,9 @@ import { UseCases } from "@/components/sections/use-cases";
 import { KeyFeatures } from "@/components/sections/key-features";
 import { ProductShowcase } from "@/components/sections/product-showcase";
 import { Benefits } from "@/components/sections/benefits";
+import { ContactCTA } from "@/components/sections/contact-cta";
 // import { TrustSignals } from "@/components/sections/trust-signals";
-import { Pricing } from "@/components/sections/pricing";
+// import { Pricing } from "@/components/sections/pricing";
 // import { CaseStudies } from "@/components/sections/case-studies";
 // import { Integrations } from "@/components/sections/integrations";
 import { Metadata } from "next";
@@ -29,9 +30,10 @@ export default function HomePage() {
       <UseCases />
       <ProductShowcase />
       <Benefits />
+      <ContactCTA />
       {/* <CaseStudies /> */}
       {/* <Integrations /> */}
-      <Pricing />
+      {/* <Pricing /> */}
       {/* <TrustSignals /> */}
     </MarketingLayout>
   );

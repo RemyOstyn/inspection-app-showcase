@@ -1,5 +1,6 @@
 import { Header } from "./layout/header";
 import { Footer } from "./layout/footer";
+import { FloatingCTA } from "./ui/floating-cta";
 
 interface MarketingLayoutProps {
   children: React.ReactNode;
@@ -15,6 +16,7 @@ export function MarketingLayout({ children }: MarketingLayoutProps) {
       </main>
       
       <Footer />
+      <FloatingCTA />
     </div>
   );
 }

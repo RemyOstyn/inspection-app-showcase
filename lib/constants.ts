@@ -3,17 +3,13 @@
 export const APP_NAME = 'InspectionPro';
 export const APP_DESCRIPTION = 'Transform your field operations with an offline-first inspection platform that works anywhere, syncs seamlessly, and adapts to your business needs.';
 
-// Routes
+// Routes (single page with anchor links)
 export const ROUTES = {
   HOME: '/',
   FEATURES: '#key-features',
   INDUSTRIES: '#use-cases',
-  PRICING: '#pricing',
   DEMO: '#product-showcase',
-  CONTACT: '/contact',
-  RESOURCES: '/resources',
-  PARTNERS: '/partners',
-  CASE_STUDIES: '/case-studies',
+  CONTACT: '#contact',
   PRIVACY: '/privacy',
   TERMS: '/terms',
 } as const;
@@ -21,49 +17,48 @@ export const ROUTES = {
 
 
 
-// Benefits with metrics
+// Benefits with core value propositions
 export const BENEFITS = [
   {
     id: 'reduce-risk',
     title: 'Reduce Operational Risk',
-    metrics: [
-      '60% reduction in missed inspections',
-      'Zero data loss guarantee',
+    benefits: [
+      'Eliminate missed inspections',
+      'Reliable data capture',
     ],
   },
   {
     id: 'increase-efficiency',
     title: 'Increase Efficiency',
-    metrics: [
-      '80% faster inspection completion',
+    benefits: [
+      'Streamlined inspection process',
       'Instant report generation',
     ],
   },
   {
     id: 'improve-compliance',
     title: 'Improve Compliance',
-    metrics: [
-      '100% audit trail',
+    benefits: [
+      'Complete audit trail',
       'Automated compliance reporting',
     ],
   },
   {
     id: 'scale-operations',
     title: 'Scale Your Operations',
-    metrics: [
-      'Support 1000+ concurrent users',
-      'Works in 50+ countries',
+    benefits: [
+      'Support unlimited users',
+      'Works anywhere',
     ],
   },
 ] as const;
 
-// Trust signals
-export const TRUST_SIGNALS = {
-  COMPANIES: '500+ companies worldwide',
-  INSPECTIONS: '10 million+ inspections completed',
-  UPTIME: '99.9% uptime for 3 years',
-  DATA_LOSS: 'Zero data loss incidents',
-} as const;
+// Trust signals (commented out - app in development)
+// export const TRUST_SIGNALS = {
+//   COMPANIES: 'Working demo available',
+//   UPTIME: 'Enterprise-grade infrastructure',
+//   DATA_LOSS: 'Secure offline-first architecture',
+// } as const;
 
 // Pricing tiers
 export const PRICING_TIERS = [
@@ -122,16 +117,16 @@ export const PRICING_TIERS = [
 
 // Contact information
 export const CONTACT = {
-  EMAIL: 'hello@inspectionpro.com',
-  PHONE: '+1 (555) 123-4567',
-  ADDRESS: '123 Tech Street, San Francisco, CA 94105',
+  EMAIL: 'contact@example.com',
+  PHONE: '+1 (555) 000-0000',
+  ADDRESS: 'Contact us for more information',
 } as const;
 
 // Social links
 export const SOCIAL_LINKS = {
-  TWITTER: 'https://twitter.com/inspectionpro',
-  LINKEDIN: 'https://linkedin.com/company/inspectionpro',
-  GITHUB: 'https://github.com/inspectionpro',
+  TWITTER: 'https://twitter.com/example',
+  LINKEDIN: 'https://linkedin.com/company/example',
+  GITHUB: 'https://github.com/example',
 } as const;
 
 // SEO keywords

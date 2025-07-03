@@ -7,16 +7,12 @@ interface BenefitCardProps {
   icon: LucideIcon;
   title: string;
   description: string;
-  statistic: string;
-  statLabel: string;
 }
 
 export function BenefitCard({ 
   icon: Icon, 
   title, 
-  description, 
-  statistic, 
-  statLabel 
+  description
 }: BenefitCardProps) {
   return (
     <Card className="group h-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
@@ -31,15 +27,6 @@ export function BenefitCard({
             <p className="text-muted-foreground text-sm leading-relaxed">
               {description}
             </p>
-          </div>
-          
-          <div className="pt-2 border-t border-border/50 w-full">
-            <div className="text-2xl font-bold text-primary mb-1">
-              {statistic}
-            </div>
-            <div className="text-xs text-muted-foreground font-medium">
-              {statLabel}
-            </div>
           </div>
         </div>
       </CardContent>

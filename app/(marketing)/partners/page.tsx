@@ -1,3 +1,16 @@
+// COMMENTED OUT - Page disabled for early-stage app positioning
+// Uncomment when ready to launch partner program
+
+// Temporary redirect to homepage until partner program is ready
+import { redirect } from "next/navigation";
+
+export default function PartnersPage() {
+  redirect("/");
+}
+
+/*
+Original page content commented out:
+
 import { ComingSoon } from "@/components/coming-soon";
 import { Metadata } from "next";
 
@@ -31,3 +44,4 @@ export default function PartnersPage() {
     />
   );
 }
+*/

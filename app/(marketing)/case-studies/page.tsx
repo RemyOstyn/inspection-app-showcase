@@ -1,3 +1,16 @@
+// COMMENTED OUT - Page disabled for early-stage app positioning
+// Uncomment when ready to add real case studies
+
+// Temporary redirect to homepage until case studies are ready
+import { redirect } from "next/navigation";
+
+export default function CaseStudiesPage() {
+  redirect("/");
+}
+
+/*
+Original page content commented out:
+
 import { MarketingLayout } from "@/components/marketing-layout";
 import { CaseStudyCard } from "@/components/cards/case-study-card";
 import { caseStudies } from "@/data/case-studies";
@@ -30,7 +43,7 @@ export const metadata: Metadata = {
 export default function CaseStudiesPage() {
   return (
     <MarketingLayout>
-      {/* Hero Section */}
+      Hero Section
       <section className="pt-12 pb-16 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
         
@@ -46,7 +59,7 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* Case Studies Grid */}
+      Case Studies Grid
       <section className="px-4">
         <div className="container mx-auto">
           {caseStudies.length > 0 ? (
@@ -59,7 +72,7 @@ export default function CaseStudiesPage() {
                 ))}
               </div>
 
-              {/* Coming Soon Section */}
+              Coming Soon Section
               <Card className="bg-muted/20 border-dashed border-2">
                 <CardHeader className="text-center">
                   <div className="mx-auto w-12 h-12 bg-muted rounded-full flex items-center justify-center mb-4">
@@ -67,7 +80,7 @@ export default function CaseStudiesPage() {
                   </div>
                   <CardTitle>More Success Stories Coming Soon</CardTitle>
                   <CardDescription className="max-w-2xl mx-auto">
-                    We&apos;re working with more amazing clients across various industries. 
+                    We're working with more amazing clients across various industries. 
                     Their success stories will be featured here as we continue to help businesses 
                     transform their field operations.
                   </CardDescription>
@@ -86,14 +99,14 @@ export default function CaseStudiesPage() {
               </Card>
             </>
           ) : (
-            /* Fallback for when no case studies exist */
+            Fallback for when no case studies exist
             <div className="text-center py-16">
               <div className="mx-auto w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-6">
                 <Plus className="h-8 w-8 text-muted-foreground" />
               </div>
               <h2 className="text-2xl font-semibold mb-4">Case Studies Coming Soon</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-                We&apos;re working with amazing clients across various industries. 
+                We're working with amazing clients across various industries. 
                 Their success stories will be featured here as we help businesses 
                 transform their field operations.
               </p>
@@ -108,7 +121,7 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      CTA Section
       <section className="py-24 px-4 bg-primary/5">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">
@@ -137,3 +150,4 @@ export default function CaseStudiesPage() {
     </MarketingLayout>
   );
 }
+*/

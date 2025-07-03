@@ -33,10 +33,8 @@ export function Footer() {
 
   const productLinks = [
     { name: "Features", href: ROUTES.FEATURES },
-    { name: "Pricing", href: ROUTES.PRICING },
     { name: "Demo", href: ROUTES.DEMO },
-    { name: "Case Studies", href: ROUTES.CASE_STUDIES },
-    { name: "White Label", href: ROUTES.PARTNERS },
+    { name: "Contact", href: ROUTES.CONTACT },
   ];
 
   const industryLinks = [
@@ -49,7 +47,7 @@ export function Footer() {
   ];
 
   const resourceLinks = [
-    { name: "Case Studies", href: ROUTES.CASE_STUDIES },
+    { name: "Documentation", href: "#" },
   ];
 
   const legalLinks = [

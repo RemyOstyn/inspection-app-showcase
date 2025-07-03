@@ -184,16 +184,24 @@ export function UseCases() {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <p className="text-muted-foreground mb-6">
+          <p className="text-muted-foreground mb-2">
             Don&apos;t see your industry? Our platform adapts to any field operation.
           </p>
+          <p className="text-sm text-primary font-medium mb-6">
+            ⚡ Personalized demo ready in 24 hours
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="/contact" 
+            <button 
+              onClick={() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
               className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             >
-              Schedule a Demo
-            </a>
+              Request Demo
+            </button>
             {/* <a 
               href="/industries" 
               className="inline-flex items-center justify-center rounded-md border border-border bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"

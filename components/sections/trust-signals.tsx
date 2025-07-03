@@ -12,7 +12,7 @@ import {
   Smartphone,
   Server
 } from "lucide-react";
-import { TRUST_SIGNALS } from "@/lib/constants";
+// import { TRUST_SIGNALS } from "@/lib/constants"; // Commented out - app in development
 
 const cardContainerVariants = {
   hidden: { opacity: 0 },
@@ -151,24 +151,24 @@ const techStack = [
 
 const statistics = [
   {
-    value: TRUST_SIGNALS.COMPANIES.split(' ')[0],
-    label: "Companies Worldwide",
-    description: "Trust our platform"
+    value: "Demo",
+    label: "Available Now",
+    description: "See it in action"
   },
   {
-    value: TRUST_SIGNALS.INSPECTIONS.split(' ')[0],
-    label: "Inspections Completed",
-    description: "Proven at scale"
+    value: "24hr",
+    label: "Setup Time",
+    description: "Quick deployment"
   },
   {
-    value: TRUST_SIGNALS.UPTIME.split(' ')[0],
-    label: "Uptime Reliability",
-    description: "For 3 years running"
+    value: "99.9%",
+    label: "Target Uptime",
+    description: "Enterprise infrastructure"
   },
   {
     value: "Zero",
-    label: "Data Loss Incidents",
-    description: "100% data protection"
+    label: "Data Loss Risk",
+    description: "Offline-first design"
   }
 ];
 
@@ -190,10 +190,10 @@ export function TrustSignals() {
           }}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Trusted by Businesses Worldwide
+            Built for Enterprise Reliability
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Join thousands of companies using our platform with enterprise-grade security and proven reliability.
+            Designed with enterprise-grade security and reliability from day one. Working demo available now.
           </p>
         </motion.div>
 
