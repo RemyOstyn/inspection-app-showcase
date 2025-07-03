@@ -1,11 +1,26 @@
 // COMMENTED OUT - Page disabled for early-stage app positioning
 // Uncomment when ready to launch partner program
 
-// Temporary redirect to homepage until partner program is ready
-import { redirect } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Partners - Coming Soon",
+  description: "Partner program is coming soon.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function PartnersPage() {
-  redirect("/");
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-2xl font-bold mb-4">Partners</h1>
+        <p className="text-muted-foreground">Coming soon...</p>
+      </div>
+    </div>
+  );
 }
 
 /*

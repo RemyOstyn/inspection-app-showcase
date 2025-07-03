@@ -1,11 +1,26 @@
 // COMMENTED OUT - Page disabled for early-stage app positioning
 // Uncomment when ready to add real case studies
 
-// Temporary redirect to homepage until case studies are ready
-import { redirect } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Case Studies - Coming Soon",
+  description: "Case studies are coming soon.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function CaseStudiesPage() {
-  redirect("/");
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-2xl font-bold mb-4">Case Studies</h1>
+        <p className="text-muted-foreground">Coming soon...</p>
+      </div>
+    </div>
+  );
 }
 
 /*
