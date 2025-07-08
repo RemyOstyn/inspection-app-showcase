@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,25 +11,25 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-import { APP_NAME } from "@/lib/constants";
+import { APP_NAME, ROUTES } from "@/lib/constants";
 import { MenuIcon } from "lucide-react";
 
 const navigationItems = [
   {
     title: "Features",
-    href: "#key-features",
+    href: ROUTES.FEATURES,
   },
   {
     title: "Use Cases",
-    href: "#use-cases",
+    href: ROUTES.INDUSTRIES,
   },
   {
     title: "Product Demo",
-    href: "#product-showcase",
+    href: ROUTES.DEMO,
   },
   {
     title: "Contact",
-    href: "#contact",
+    href: ROUTES.CONTACT,
   },
 ];
 
@@ -37,14 +38,6 @@ export function MobileNavigation() {
 
   const closeSheet = () => {
     setIsOpen(false);
-  };
-
-  const handleSmoothScroll = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    closeSheet();
   };
 
   return (
@@ -66,23 +59,25 @@ export function MobileNavigation() {
         
         <div className="mt-6 flex flex-col space-y-2">
           {navigationItems.map((item) => (
-            <button
+            <Link
               key={item.title}
-              onClick={() => handleSmoothScroll(item.href)}
-              className="block rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground text-left"
+              href={item.href}
+              onClick={closeSheet}
+              className="block rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground text-left cursor-pointer"
             >
               {item.title}
-            </button>
+            </Link>
           ))}
           
           <Separator className="my-4" />
           
-          <button
-            onClick={() => handleSmoothScroll('#contact')}
-            className="w-full bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 rounded-md text-sm font-medium transition-colors"
+          <Link
+            href={ROUTES.CONTACT}
+            onClick={closeSheet}
+            className="w-full bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 rounded-md text-sm font-medium transition-colors flex items-center justify-center cursor-pointer"
           >
             Request Demo
-          </button>
+          </Link>
         </div>
       </SheetContent>
     </Sheet>

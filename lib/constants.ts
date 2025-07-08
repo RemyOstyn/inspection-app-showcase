@@ -6,10 +6,10 @@ export const APP_DESCRIPTION = 'Transform your field operations with an offline-
 // Routes (single page with anchor links)
 export const ROUTES = {
   HOME: '/',
-  FEATURES: '#key-features',
-  INDUSTRIES: '#use-cases',
-  DEMO: '#product-showcase',
-  CONTACT: '#contact',
+  FEATURES: '/#key-features',
+  INDUSTRIES: '/#use-cases',
+  DEMO: '/#product-showcase',
+  CONTACT: '/#contact',
   PRIVACY: '/privacy',
   TERMS: '/terms',
 } as const;
