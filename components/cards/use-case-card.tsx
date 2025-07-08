@@ -1,7 +1,6 @@
 'use client'
 
 import { Card, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { 
   Truck, 
@@ -10,7 +9,6 @@ import {
   Heart,
   Wheat,
   HardHat,
-  ArrowRight,
   CheckCircle2
 } from 'lucide-react'
 import type { UseCase } from '@/data/use-cases'
@@ -30,7 +28,7 @@ interface UseCaseCardProps {
 }
 
 export function UseCaseCard({ useCase, className }: UseCaseCardProps) {
-  const { title, subtitle, description, features, icon: iconName, gradient, learnMoreLink } = useCase
+  const { title, subtitle, description, features, icon: iconName, gradient } = useCase
   const Icon = iconMap[iconName as keyof typeof iconMap]
 
   if (!Icon) {
@@ -83,19 +81,6 @@ export function UseCaseCard({ useCase, className }: UseCaseCardProps) {
             </ul>
           </div>
 
-          {/* CTA Button */}
-          <div className="mt-6 pt-4 border-t border-border/50">
-            <Button 
-              variant="ghost" 
-              className="w-full justify-between group-hover:bg-primary/10 transition-all duration-300"
-              asChild
-            >
-              <a href={learnMoreLink}>
-                <span>Learn More</span>
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
-            </Button>
-          </div>
         </div>
         
         {/* Hover overlay */}

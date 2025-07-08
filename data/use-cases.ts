@@ -6,7 +6,6 @@ export interface UseCase {
   features: string[]
   icon: string
   gradient: string
-  learnMoreLink: string
 }
 
 export const useCases: UseCase[] = [
@@ -22,8 +21,7 @@ export const useCases: UseCase[] = [
       'Automated condition reports'
     ],
     icon: 'Truck',
-    gradient: 'from-blue-500 to-cyan-500',
-    learnMoreLink: '/industries/equipment-rental'
+    gradient: 'from-blue-500 to-cyan-500'
   },
   {
     id: 'property-management',
@@ -37,8 +35,7 @@ export const useCases: UseCase[] = [
       'Tenant communication logs'
     ],
     icon: 'Building2',
-    gradient: 'from-green-500 to-emerald-500',
-    learnMoreLink: '/industries/property-management'
+    gradient: 'from-green-500 to-emerald-500'
   },
   {
     id: 'fleet-management',
@@ -52,8 +49,7 @@ export const useCases: UseCase[] = [
       'Maintenance scheduling'
     ],
     icon: 'Car',
-    gradient: 'from-purple-500 to-pink-500',
-    learnMoreLink: '/industries/fleet-management'
+    gradient: 'from-purple-500 to-pink-500'
   },
   {
     id: 'healthcare',
@@ -67,8 +63,7 @@ export const useCases: UseCase[] = [
       'Regulatory reporting'
     ],
     icon: 'Heart',
-    gradient: 'from-red-500 to-orange-500',
-    learnMoreLink: '/industries/healthcare'
+    gradient: 'from-red-500 to-orange-500'
   },
   {
     id: 'agriculture',
@@ -82,8 +77,7 @@ export const useCases: UseCase[] = [
       'Yield tracking'
     ],
     icon: 'Wheat',
-    gradient: 'from-yellow-500 to-amber-500',
-    learnMoreLink: '/industries/agriculture'
+    gradient: 'from-yellow-500 to-amber-500'
   },
   {
     id: 'construction',
@@ -97,7 +91,6 @@ export const useCases: UseCase[] = [
       'Safety compliance reports'
     ],
     icon: 'HardHat',
-    gradient: 'from-orange-500 to-red-500',
-    learnMoreLink: '/industries/construction'
+    gradient: 'from-orange-500 to-red-500'
   }
 ]
