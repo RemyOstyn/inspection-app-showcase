@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -35,8 +36,14 @@ export function Header() {
           className="flex items-center space-x-2 font-bold text-xl"
           aria-label={`${APP_NAME} - Home`}
         >
-          <div className="h-8 w-8 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm">PFW</span>
+          <div className="h-8 w-8 flex items-center justify-center">
+            <Image
+              src="/images/pfw_logo.png"
+              alt={`${APP_NAME} Logo`}
+              width={32}
+              height={32}
+              className="object-contain"
+            />
           </div>
           <span className="hidden sm:inline-block">{APP_NAME}</span>
         </Link>

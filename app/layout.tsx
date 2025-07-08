@@ -22,6 +22,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: "/images/pfw_logo.png",
+    shortcut: "/images/pfw_logo.png",
+    apple: "/images/pfw_logo.png",
+  },
 };
 
 export const viewport = {
