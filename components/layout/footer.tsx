@@ -14,7 +14,6 @@ import {
 } from "@/lib/constants";
 import { 
   Mail, 
-  Phone, 
   MapPin, 
   X,
   CheckCircle
@@ -47,15 +46,14 @@ export function Footer() {
     { name: "Construction", href: "/#use-cases" },
   ];
 
-  const resourceLinks = [
-    { name: "Documentation", href: "#" },
+  const resourceLinks: { name: string; href: string }[] = [
+    // Documentation coming soon
   ];
 
   const legalLinks = [
     { name: "Privacy Policy", href: ROUTES.PRIVACY },
     { name: "Terms of Service", href: ROUTES.TERMS },
     { name: "Cookie Policy", href: "/cookies" },
-    { name: "GDPR", href: "/gdpr" },
   ];
 
 
@@ -107,7 +105,7 @@ export function Footer() {
         <Separator className="mb-12" />
 
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Information */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
@@ -133,12 +131,6 @@ export function Footer() {
                 <Mail className="w-4 h-4" />
                 <a href={`mailto:${CONTACT.EMAIL}`} className="hover:text-foreground transition-colors">
                   {CONTACT.EMAIL}
-                </a>
-              </div>
-              <div className="flex items-center space-x-3 text-sm text-muted-foreground">
-                <Phone className="w-4 h-4" />
-                <a href={`tel:${CONTACT.PHONE}`} className="hover:text-foreground transition-colors">
-                  {CONTACT.PHONE}
                 </a>
               </div>
               <div className="flex items-start space-x-3 text-sm text-muted-foreground">
@@ -182,22 +174,24 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Resources */}
-          <div>
-            <h4 className="font-semibold mb-4">Resources</h4>
-            <ul className="space-y-3">
-              {resourceLinks.map((link) => (
-                <li key={link.name}>
-                  <Link 
-                    href={link.href} 
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Resources - Only show if there are links */}
+          {resourceLinks.length > 0 && (
+            <div>
+              <h4 className="font-semibold mb-4">Resources</h4>
+              <ul className="space-y-3">
+                {resourceLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link 
+                      href={link.href} 
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Legal */}
           <div>
