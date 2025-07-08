@@ -111,7 +111,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <div className="h-8 w-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">IP</span>
+                <span className="text-primary-foreground font-bold text-sm">PFW</span>
               </div>
               <span className="font-bold text-lg">{APP_NAME}</span>
             </div>

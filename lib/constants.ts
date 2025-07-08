@@ -1,6 +1,6 @@
 // Application constants
 
-export const APP_NAME = 'InspectionPro';
+export const APP_NAME = 'ProFieldWork';
 export const APP_DESCRIPTION = 'Transform your field operations with an offline-first inspection platform that works anywhere, syncs seamlessly, and adapts to your business needs.';
 
 // Routes (single page with anchor links)
@@ -117,16 +117,16 @@ export const PRICING_TIERS = [
 
 // Contact information
 export const CONTACT = {
-  EMAIL: 'contact@example.com',
+  EMAIL: 'contact@profieldwork.com',
   PHONE: '+1 (555) 000-0000',
   ADDRESS: 'Contact us for more information',
 } as const;
 
 // Social links
 export const SOCIAL_LINKS = {
-  TWITTER: 'https://twitter.com/example',
-  LINKEDIN: 'https://linkedin.com/company/example',
-  GITHUB: 'https://github.com/example',
+  TWITTER: 'https://twitter.com/profieldwork',
+  LINKEDIN: 'https://linkedin.com/company/profieldwork',
+  GITHUB: 'https://github.com/profieldwork',
 } as const;
 
 // SEO keywords

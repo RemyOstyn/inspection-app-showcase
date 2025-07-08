@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://inspection-platform.com"),
-  title: "Inspection Platform - Offline-First Mobile Inspection Solution",
+  metadataBase: new URL("https://profieldwork.com"),
+  title: "ProFieldWork - Offline-First Mobile Inspection Solution",
   description: "Enterprise-grade offline inspection platform that works anywhere. Customizable forms, white-label ready, and trusted by 500+ companies worldwide.",
   robots: "index, follow",
   alternates: {

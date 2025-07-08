@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://inspection-platform.com'
+  const baseUrl = 'https://profieldwork.com'
   
   return [
     {

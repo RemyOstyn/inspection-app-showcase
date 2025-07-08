@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "Offline-First Mobile Inspection Platform",
-    template: "%s | Inspection Platform",
+    default: "ProFieldWork - Offline-First Mobile Inspection Platform",
+    template: "%s | ProFieldWork",
   },
   description: "Transform your field operations with an offline-first inspection platform that works anywhere, syncs seamlessly, and adapts to your business needs.",
   keywords: [
@@ -14,21 +14,21 @@ export const metadata: Metadata = {
     "offline data collection",
     "mobile inspection solution",
   ],
-  authors: [{ name: "Inspection Platform" }],
-  creator: "Inspection Platform",
+  authors: [{ name: "ProFieldWork" }],
+  creator: "ProFieldWork",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://inspection-platform.com",
-    title: "Offline-First Mobile Inspection Platform",
+    url: "https://profieldwork.com",
+    title: "ProFieldWork - Offline-First Mobile Inspection Platform",
     description: "Transform your field operations with an offline-first inspection platform that works anywhere, syncs seamlessly, and adapts to your business needs.",
-    siteName: "Inspection Platform",
+    siteName: "ProFieldWork",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Offline-First Mobile Inspection Platform",
+    title: "ProFieldWork - Offline-First Mobile Inspection Platform",
     description: "Transform your field operations with an offline-first inspection platform that works anywhere, syncs seamlessly, and adapts to your business needs.",
-    creator: "@inspectionplatform",
+    creator: "@profieldwork",
   },
   robots: {
     index: true,

@@ -36,7 +36,7 @@ export function Header() {
           aria-label={`${APP_NAME} - Home`}
         >
           <div className="h-8 w-8 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm">IP</span>
+            <span className="text-primary-foreground font-bold text-sm">PFW</span>
           </div>
           <span className="hidden sm:inline-block">{APP_NAME}</span>
         </Link>

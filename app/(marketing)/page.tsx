@@ -12,11 +12,11 @@ import { ContactCTA } from "@/components/sections/contact-cta";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Offline-First Field Inspection Platform | Works Anywhere",
+  title: "ProFieldWork - Offline-First Field Inspection Platform | Works Anywhere",
   description: "Transform your field operations with an offline-first inspection platform that works anywhere, syncs seamlessly, and adapts to your business needs. Working demo available.",
   keywords: ["offline inspection app", "field inspection software", "white label inspection platform", "custom form builder app", "offline data collection", "mobile inspection solution"],
   openGraph: {
-    title: "Offline-First Field Inspection Platform | Works Anywhere",
+    title: "ProFieldWork - Offline-First Field Inspection Platform | Works Anywhere",
     description: "Transform your field operations with an offline-first inspection platform that works anywhere, syncs seamlessly, and adapts to your business needs.",
     type: "website",
   },
