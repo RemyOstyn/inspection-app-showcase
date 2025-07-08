@@ -60,10 +60,10 @@ export default function MarketingError({
           <p>
             Contact our support team at{' '}
             <a 
-              href="mailto:support@inspection-platform.com" 
+              href="mailto:support@profieldwork.com" 
               className="text-primary hover:underline"
             >
-              support@inspection-platform.com
+              support@profieldwork.com
             </a>
           </p>
         </div>

@@ -4,8 +4,13 @@ import { Button } from "@/components/ui/button"
 import { ChevronDown, Zap, Users, CheckCircle } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import { trackDemoRequest } from "@/lib/analytics"
 
 export function Hero() {
+  const handleDemoClick = () => {
+    trackDemoRequest();
+  };
+
   return (
     <section className="relative min-h-[90vh] overflow-hidden pb-12">
       {/* Professional gradient background */}
@@ -70,7 +75,7 @@ export function Hero() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="min-w-[180px] bg-primary hover:bg-primary/90" asChild>
-                <Link href="#contact">
+                <Link href="#contact" onClick={handleDemoClick}>
                   Request Demo
                 </Link>
               </Button>

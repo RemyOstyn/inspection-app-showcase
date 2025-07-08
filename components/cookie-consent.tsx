@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { X, Settings, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { setAnalyticsConsent } from "@/lib/analytics";
 
 interface CookieConsentProps {
   className?: string;
@@ -25,17 +26,17 @@ export function CookieConsent({ className }: CookieConsentProps) {
   }, []);
 
   const handleAcceptAll = () => {
-    localStorage.setItem("cookie-consent", "all");
+    localStorage.setItem("cookie-consent", "accepted");
     setIsVisible(false);
-    // Here you would typically initialize analytics and marketing scripts
-    console.log("All cookies accepted");
+    // Enable analytics and marketing tracking
+    setAnalyticsConsent(true);
   };
 
   const handleAcceptEssential = () => {
     localStorage.setItem("cookie-consent", "essential");
     setIsVisible(false);
-    // Only essential cookies are used
-    console.log("Only essential cookies accepted");
+    // Disable analytics and marketing tracking
+    setAnalyticsConsent(false);
   };
 
   const handleCustomize = () => {

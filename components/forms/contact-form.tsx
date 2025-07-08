@@ -14,6 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { trackDemoRequest, trackContactFormSubmit } from "@/lib/analytics";
 
 interface ContactFormData {
   name: string;
@@ -83,6 +84,18 @@ export function ContactForm() {
     try {
       // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Track analytics events
+      trackDemoRequest({
+        industry: formData.industry,
+        company: formData.company,
+      });
+      
+      trackContactFormSubmit({
+        industry: formData.industry,
+        type: 'demo_request'
+      });
+      
       console.log("Form submitted:", formData);
       setIsSubmitted(true);
     } catch (error) {
@@ -250,7 +263,7 @@ export function ContactForm() {
           type="button"
           variant="outline"
           className="flex-1"
-          onClick={() => window.open("https://calendly.com/inspection-demo", "_blank")}
+          onClick={() => window.open("https://calendly.com/profieldwork-demo", "_blank")}
         >
           <Calendar className="w-4 h-4 mr-2" />
           Schedule Call

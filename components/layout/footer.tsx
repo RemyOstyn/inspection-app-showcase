@@ -18,6 +18,7 @@ import {
   X,
   CheckCircle
 } from "lucide-react";
+import { trackNewsletterSignup } from "@/lib/analytics";
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -25,6 +26,10 @@ export function Footer() {
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Track newsletter signup
+    trackNewsletterSignup({ source: 'footer' });
+    
     // TODO: Implement newsletter subscription logic
     setIsSubscribed(true);
     setEmail("");

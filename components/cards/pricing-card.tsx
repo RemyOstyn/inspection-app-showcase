@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { trackTrialSignup } from "@/lib/analytics"
 import type { PricingTier } from "@/data/pricing"
 
 interface PricingCardProps {
@@ -20,6 +21,16 @@ export function PricingCard({ tier, isAnnual = false, index = 0 }: PricingCardPr
   const savings = isAnnual && tier.annualPrice && tier.price !== "Custom" 
     ? (parseInt(tier.price) * 12 - parseInt(tier.annualPrice))
     : 0
+
+  const handleCTAClick = () => {
+    // Track trial signup for starter and professional plans
+    if (tier.id === 'starter' || tier.id === 'professional') {
+      trackTrialSignup({
+        plan: tier.id as 'starter' | 'professional',
+        method: 'pricing_page'
+      });
+    }
+  };
 
   return (
     <motion.div
@@ -84,7 +95,7 @@ export function PricingCard({ tier, isAnnual = false, index = 0 }: PricingCardPr
             size="lg"
             asChild
           >
-            <Link href={tier.href}>
+            <Link href={tier.href} onClick={handleCTAClick}>
               {tier.cta}
             </Link>
           </Button>

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { trackDemoRequest } from "@/lib/analytics";
 
 export function FloatingCTA() {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,6 +33,9 @@ export function FloatingCTA() {
   };
 
   const handleCTAClick = () => {
+    // Track demo request from floating CTA
+    trackDemoRequest();
+    
     const contactSection = document.getElementById("contact");
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: "smooth" });
