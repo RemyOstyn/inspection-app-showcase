@@ -2,7 +2,6 @@ import { MarketingLayout } from "@/components/marketing-layout";
 import { Hero } from "@/components/sections/hero";
 import { UseCases } from "@/components/sections/use-cases";
 import { KeyFeatures } from "@/components/sections/key-features";
-import { ProductShowcase } from "@/components/sections/product-showcase";
 import { Benefits } from "@/components/sections/benefits";
 import { ContactCTA } from "@/components/sections/contact-cta";
 // import { TrustSignals } from "@/components/sections/trust-signals";
@@ -11,6 +10,25 @@ import { ContactCTA } from "@/components/sections/contact-cta";
 // import { Integrations } from "@/components/sections/integrations";
 import { Metadata } from "next";
 import { SocialMeta } from "@/components/seo/social-meta";
+import dynamic from "next/dynamic";
+
+// Lazy load ProductShowcase component for better performance
+const ProductShowcase = dynamic(
+  () => import("@/components/sections/product-showcase").then((mod) => ({ default: mod.ProductShowcase })),
+  {
+    loading: () => (
+      <div className="relative py-24 from-muted/20 to-muted/40">
+        <div className="container-wide">
+          <div className="text-center mb-16">
+            <div className="h-8 bg-muted rounded w-1/2 mx-auto mb-4 animate-pulse" />
+            <div className="h-4 bg-muted rounded w-3/4 mx-auto animate-pulse" />
+          </div>
+          <div className="h-96 bg-muted rounded animate-pulse" />
+        </div>
+      </div>
+    ),
+  }
+);
 
 export const metadata: Metadata = {
   title: "Offline Inspection App | Field Inspection Software | Mobile Platform",

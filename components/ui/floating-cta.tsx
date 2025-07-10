@@ -71,6 +71,7 @@ export function FloatingCTA() {
                 variant="ghost"
                 onClick={handleDismiss}
                 className="h-6 w-6 p-0 hover:bg-muted"
+                aria-label="Dismiss demo banner"
               >
                 <X className="h-3 w-3" />
               </Button>
@@ -81,6 +82,7 @@ export function FloatingCTA() {
                 size="sm" 
                 onClick={handleCTAClick}
                 className="flex-1"
+                aria-label="Request demo - scroll to contact form"
               >
                 <Calendar className="w-3 h-3 mr-1" />
                 Request Demo

@@ -19,11 +19,9 @@ export function Hero() {
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,theme(colors.border)_1px,transparent_1px),linear-gradient(to_bottom,theme(colors.border)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000,transparent)]" />
       
-      {/* Floating geometric elements */}
+      {/* Floating geometric elements - optimized */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-[10%] w-2 h-2 bg-primary/20 rounded-full animate-pulse" />
-        <div className="absolute top-40 right-[15%] w-1 h-1 bg-accent/30 rounded-full animate-pulse delay-1000" />
-        <div className="absolute bottom-40 left-[20%] w-1.5 h-1.5 bg-primary/15 rounded-full animate-pulse delay-2000" />
         <div className="absolute top-1/2 right-[25%] w-1 h-8 bg-gradient-to-b from-primary/20 to-transparent" />
       </div>
 
@@ -75,7 +73,7 @@ export function Hero() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="min-w-[180px] bg-primary hover:bg-primary/90" asChild>
-                <Link href="#contact" onClick={handleDemoClick}>
+                <Link href="#contact" onClick={handleDemoClick} aria-label="Request a personalized demo of the inspection platform">
                   Request Demo
                 </Link>
               </Button>
@@ -105,7 +103,7 @@ export function Hero() {
                         <CheckCircle className="w-4 h-4 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-semibold">Inspection Dashboard</h3>
+                        <h2 className="font-semibold">Inspection Dashboard</h2>
                         <p className="text-sm text-muted-foreground">Real-time overview</p>
                       </div>
                     </div>
@@ -127,9 +125,8 @@ export function Hero() {
                 </div>
               </div>
               
-              {/* Floating elements */}
+              {/* Floating elements - optimized */}
               <div className="absolute -top-4 -right-4 w-16 h-16 bg-accent/20 rounded-full animate-pulse" />
-              <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-primary/20 rounded-full animate-pulse delay-1000" />
             </div>
           </motion.div>
         </div>

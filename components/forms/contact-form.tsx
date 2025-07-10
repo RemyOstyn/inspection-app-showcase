@@ -161,9 +161,10 @@ export function ContactForm() {
             onChange={(e) => handleInputChange("name", e.target.value)}
             placeholder="Enter your full name"
             className={errors.name ? "border-red-500" : ""}
+            aria-describedby={errors.name ? "name-error" : undefined}
           />
           {errors.name && (
-            <p className="text-sm text-red-500">{errors.name}</p>
+            <p id="name-error" className="text-sm text-red-500">{errors.name}</p>
           )}
         </div>
 
@@ -180,9 +181,10 @@ export function ContactForm() {
             onChange={(e) => handleInputChange("email", e.target.value)}
             placeholder="Enter your email address"
             className={errors.email ? "border-red-500" : ""}
+            aria-describedby={errors.email ? "email-error" : undefined}
           />
           {errors.email && (
-            <p className="text-sm text-red-500">{errors.email}</p>
+            <p id="email-error" className="text-sm text-red-500">{errors.email}</p>
           )}
         </div>
 
@@ -199,9 +201,10 @@ export function ContactForm() {
             onChange={(e) => handleInputChange("company", e.target.value)}
             placeholder="Enter your company name"
             className={errors.company ? "border-red-500" : ""}
+            aria-describedby={errors.company ? "company-error" : undefined}
           />
           {errors.company && (
-            <p className="text-sm text-red-500">{errors.company}</p>
+            <p id="company-error" className="text-sm text-red-500">{errors.company}</p>
           )}
         </div>
 
@@ -209,7 +212,7 @@ export function ContactForm() {
         <div className="space-y-2">
           <Label htmlFor="industry">Industry</Label>
           <Select value={formData.industry} onValueChange={(value) => handleInputChange("industry", value)}>
-            <SelectTrigger>
+            <SelectTrigger id="industry" aria-describedby={errors.industry ? "industry-error" : undefined}>
               <SelectValue placeholder="Select your industry" />
             </SelectTrigger>
             <SelectContent>
@@ -220,6 +223,9 @@ export function ContactForm() {
               ))}
             </SelectContent>
           </Select>
+          {errors.industry && (
+            <p id="industry-error" className="text-sm text-red-500">{errors.industry}</p>
+          )}
         </div>
       </div>
 
@@ -233,9 +239,10 @@ export function ContactForm() {
           placeholder="Tell us about your inspection needs and what you'd like to see in the demo..."
           rows={4}
           className={errors.message ? "border-red-500" : ""}
+          aria-describedby={errors.message ? "message-error" : undefined}
         />
         {errors.message && (
-          <p className="text-sm text-red-500">{errors.message}</p>
+          <p id="message-error" className="text-sm text-red-500">{errors.message}</p>
         )}
       </div>
 
@@ -264,6 +271,7 @@ export function ContactForm() {
           variant="outline"
           className="flex-1"
           onClick={() => window.open("https://calendly.com/profieldwork-demo", "_blank")}
+          aria-label="Schedule a call (opens in new window)"
         >
           <Calendar className="w-4 h-4 mr-2" />
           Schedule Call

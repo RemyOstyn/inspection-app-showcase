@@ -101,7 +101,7 @@
   
   /* Muted colors for subtle elements */
   --muted: oklch(0.94 0.005 250); /* Light slate muted background for better contrast */
-  --muted-foreground: oklch(0.556 0 0); /* Medium gray text */
+  --muted-foreground: oklch(0.4 0 0); /* Darker gray text for better accessibility contrast */
   
   /* Accent colors - Professional orange for CTAs */
   --accent: oklch(0.92 0.03 40); /* Light orange accent */
@@ -161,7 +161,7 @@
   
   /* Muted colors */
   --muted: oklch(0.269 0 0); /* Dark muted background */
-  --muted-foreground: oklch(0.708 0 0); /* Medium light text */
+  --muted-foreground: oklch(0.75 0 0); /* Lighter text for better contrast in dark mode */
   
   /* Accent colors - Orange for dark mode */
   --accent: oklch(0.3 0.08 40); /* Dark orange accent */

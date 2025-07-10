@@ -64,6 +64,7 @@ export function Header() {
                 element.scrollIntoView({ behavior: 'smooth' });
               }
             }}
+            aria-label="Request a demo - scroll to contact form"
           >
             Request Demo
           </Button>

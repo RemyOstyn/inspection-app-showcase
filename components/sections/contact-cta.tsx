@@ -102,7 +102,7 @@ export function ContactCTA() {
             className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-2xl p-8 shadow-lg"
           >
             <div className="mb-6">
-              <h3 className="text-2xl font-semibold mb-2">Get Your Personalized Demo</h3>
+              <h4 className="text-2xl font-semibold mb-2">Get Your Personalized Demo</h4>
               <p className="text-muted-foreground">
                 Fill out the form below and we&apos;ll reach out within 24 hours to schedule 
                 a demo tailored to your industry and use case.
