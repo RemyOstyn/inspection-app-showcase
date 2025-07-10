@@ -138,15 +138,15 @@ export function UseCases() {
           </div>
           
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl mb-4">
-            Built for{' '}
+            Field Inspection Software for{' '}
             <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
               Every Industry
             </span>
           </h2>
           
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            From equipment rentals to healthcare facilities, our offline-first platform adapts to your unique business needs. 
-            Discover how leading companies across diverse industries transform their field operations.
+            From equipment rentals to healthcare facilities, our offline inspection app adapts to your needs. 
+            Deploy custom inspection forms and white label inspection software across any industry for mobile field inspections.
           </p>
         </motion.div>
 
@@ -185,7 +185,7 @@ export function UseCases() {
         {/* Bottom CTA */}
         <div className="text-center mt-16">
           <p className="text-muted-foreground mb-2">
-            Don&apos;t see your industry? Our platform adapts to any field operation.
+            Don&apos;t see your industry? Our field inspection software adapts to any mobile inspection needs.
           </p>
           <p className="text-sm text-primary font-medium mb-6">
             ⚡ Personalized demo ready in 24 hours

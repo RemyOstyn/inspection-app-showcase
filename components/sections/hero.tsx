@@ -44,31 +44,31 @@ export function Hero() {
 
             {/* Main headline */}
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              <span className="block text-foreground">Field Operations That</span>
+              <span className="block text-foreground">Offline-First</span>
               <span className="block bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                Work Anywhere, Anytime
+                Field Inspection Software
               </span>
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg text-muted-foreground sm:text-xl max-w-xl">
-              Transform your inspections with an offline-first platform that adapts to your business. 
-              No connectivity required. Fully customizable. Ready to scale.
+              The leading offline inspection app for field teams. Create custom inspection forms, 
+              capture data without internet, and sync seamlessly. White-label inspection software ready for any industry.
             </p>
 
             {/* Key benefits */}
             <div className="flex flex-wrap gap-6 text-sm">
               <div className="flex items-center gap-2">
                 <Zap className="w-4 h-4 text-primary" />
-                <span>Works Offline</span>
+                <span>Mobile Inspection Platform</span>
               </div>
               <div className="flex items-center gap-2">
                 <Users className="w-4 h-4 text-primary" />
-                <span>White-Label Ready</span>
+                <span>White Label Inspection Software</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-primary" />
-                <span>Zero Data Loss</span>
+                <span>Custom Inspection Forms</span>
               </div>
             </div>
 
@@ -83,8 +83,8 @@ export function Hero() {
 
             {/* Social proof */}
             <div className="pt-4 text-sm text-muted-foreground">
-              <p className="font-medium">✓ Trusted by field teams in 20+ industries</p>
-              <p className="mt-1">⚡ Working demo available • Demo ready in 1 day</p>
+              <p className="font-medium">✓ Trusted field inspection software for 20+ industries</p>
+              <p className="mt-1">⚡ Offline inspection app demo ready in 1 day</p>
             </div>
           </motion.div>
 

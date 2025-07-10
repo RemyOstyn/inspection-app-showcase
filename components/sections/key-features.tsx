@@ -85,14 +85,14 @@ export function KeyFeatures() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-            Everything You Need to{' '}
+            Mobile Inspection Platform{' '}
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              Succeed
+              Features
             </span>
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-            Our platform delivers powerful features designed for real-world field operations. 
-            From offline data collection to seamless synchronization, we&apos;ve got you covered.
+            Our offline inspection app delivers powerful field inspection software features. 
+            Create custom inspection forms, collect data offline, and sync automatically when connected.
           </p>
         </motion.div>
 

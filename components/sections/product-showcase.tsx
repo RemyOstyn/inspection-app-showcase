@@ -23,8 +23,8 @@ import {
 const mobileFeatures = [
   {
     icon: CloudOff,
-    title: "Offline-First Operation",
-    description: "Complete inspections without internet connectivity. All data stored locally until sync."
+    title: "Offline Inspection App Operation",
+    description: "Complete field inspections offline. Our mobile inspection platform stores data locally and syncs automatically."
   },
   {
     icon: Camera,
@@ -33,8 +33,8 @@ const mobileFeatures = [
   },
   {
     icon: CheckCircle,
-    title: "Dynamic Forms",
-    description: "Custom inspection forms adapt to your workflow with conditional logic and validation."
+    title: "Custom Inspection Forms",
+    description: "Build dynamic custom inspection forms for any field inspection software need with conditional logic."
   },
   {
     icon: RefreshCw,
@@ -130,14 +130,14 @@ export function ProductShowcase() {
       <div className="container-wide">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-            See Our Platform{' '}
+            Mobile Inspection Platform{' '}
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               In Action
             </span>
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-            Explore how our inspection platform works across mobile devices, admin dashboards, 
-            and custom configurations. Experience the power of offline-first design.
+            Explore our offline inspection app and field inspection software across mobile devices and dashboards. 
+            See custom inspection forms and white label inspection software capabilities in action.
           </p>
         </div>
 
@@ -172,11 +172,11 @@ export function ProductShowcase() {
                     Field Operations
                   </Badge>
                   <h3 className="text-2xl font-bold text-foreground mb-4">
-                    Built for the Field
+                    Offline Inspection App Built for the Field
                   </h3>
                   <p className="text-muted-foreground text-lg">
-                    Our mobile app is designed for real-world conditions. Work offline, 
-                    capture rich media, and sync seamlessly when connectivity returns.
+                    Our mobile inspection platform works without internet. Create custom inspection forms, 
+                    capture media offline, and sync field inspection data automatically.
                   </p>
                 </div>
 
@@ -268,11 +268,11 @@ export function ProductShowcase() {
                     Command Center
                   </Badge>
                   <h3 className="text-2xl font-bold text-foreground mb-4">
-                    Complete Visibility & Control
+                    Field Inspection Software Dashboard
                   </h3>
                   <p className="text-muted-foreground text-lg">
-                    Manage your entire inspection operation from a centralized dashboard. 
-                    Create forms, assign tasks, and monitor performance in real-time.
+                    Manage your mobile inspection platform from a centralized dashboard. 
+                    Build custom inspection forms, assign field inspections, and track offline inspection app usage.
                   </p>
                 </div>
 
@@ -308,11 +308,11 @@ export function ProductShowcase() {
                 White-Label Ready
               </Badge>
               <h3 className="text-2xl font-bold text-foreground mb-4">
-                Make It Yours
+                White Label Inspection Software
               </h3>
               <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-                Transform our platform into your branded solution. Complete customization 
-                capabilities let you deliver a seamless experience under your brand.
+                Deploy white label inspection software with your branding. Customize our offline inspection app 
+                and mobile inspection platform to deliver field inspection software under your brand.
               </p>
             </div>
 

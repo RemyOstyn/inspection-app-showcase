@@ -13,30 +13,30 @@ import { Metadata } from "next";
 import { SocialMeta } from "@/components/seo/social-meta";
 
 export const metadata: Metadata = {
-  title: "ProFieldWork - Offline-First Field Inspection Platform | Works Anywhere",
-  description: "Transform your field operations with an offline-first inspection platform that works anywhere, syncs seamlessly, and adapts to your business needs. Working demo available.",
-  keywords: ["offline inspection app", "field inspection software", "white label inspection platform", "custom form builder app", "offline data collection", "mobile inspection solution"],
+  title: "Offline Inspection App | Field Inspection Software | Mobile Platform",
+  description: "Transform field operations with our offline-first inspection software. Custom forms, mobile platform, and white-label solutions for any industry. Start free trial today.",
+  keywords: ["offline inspection app", "field inspection software", "mobile inspection platform", "custom inspection forms", "white label inspection software"],
   openGraph: {
-    title: "ProFieldWork - Offline-First Field Inspection Platform | Works Anywhere",
-    description: "Transform your field operations with an offline-first inspection platform that works anywhere, syncs seamlessly, and adapts to your business needs.",
+    title: "Offline Inspection App | Field Inspection Software | Mobile Platform",
+    description: "Transform field operations with our offline-first inspection software. Custom forms, mobile platform, and white-label solutions for any industry. Start free trial today.",
     type: "website",
     images: [
       {
         url: "https://profieldwork.com/images/social/og/og-homepage.png",
         width: 1200,
         height: 630,
-        alt: "ProFieldWork - Transform Your Field Operations with Offline-First Mobile Inspection Platform",
+        alt: "Offline Inspection App - Field Inspection Software with Mobile Platform",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ProFieldWork - Offline-First Field Inspection Platform | Works Anywhere",
-    description: "Transform your field operations with an offline-first inspection platform that works anywhere, syncs seamlessly, and adapts to your business needs.",
+    title: "Offline Inspection App | Field Inspection Software | Mobile Platform",
+    description: "Transform field operations with our offline-first inspection software. Custom forms, mobile platform, and white-label solutions for any industry. Start free trial today.",
     images: [
       {
         url: "https://profieldwork.com/images/social/twitter/twitter-homepage.png",
-        alt: "ProFieldWork - Transform Your Field Operations with Offline-First Mobile Inspection Platform",
+        alt: "Offline Inspection App - Field Inspection Software with Mobile Platform",
       },
     ],
   },

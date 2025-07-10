@@ -13,7 +13,7 @@ export const useCases: UseCase[] = [
     id: 'equipment-rental',
     title: 'Equipment Rental Companies',
     subtitle: 'Streamline Rental Operations',
-    description: 'Manage pre/post rental inspections, document equipment condition, and track maintenance schedules with ease.',
+    description: 'Use our offline inspection app for equipment rental inspections. Create custom inspection forms for pre/post rental checks and maintenance tracking.',
     features: [
       'Pre/post rental inspections',
       'Damage documentation',
@@ -27,7 +27,7 @@ export const useCases: UseCase[] = [
     id: 'property-management',
     title: 'Property Management',
     subtitle: 'Efficient Property Operations',
-    description: 'Conduct thorough move-in/move-out inspections, manage maintenance requests, and ensure compliance checks.',
+    description: 'Deploy field inspection software for property management. Custom inspection forms for move-in/out inspections and maintenance tracking offline.',
     features: [
       'Move-in/move-out inspections',
       'Maintenance requests',
@@ -41,7 +41,7 @@ export const useCases: UseCase[] = [
     id: 'fleet-management',
     title: 'Fleet Management',
     subtitle: 'Vehicle Health & Safety',
-    description: 'Monitor vehicle conditions, conduct driver inspections, and document incidents for comprehensive fleet oversight.',
+    description: 'Mobile inspection platform for fleet management. Create custom vehicle inspection forms and conduct offline field inspections anywhere.',
     features: [
       'Vehicle condition reports',
       'Driver inspections',

@@ -44,22 +44,22 @@ const benefits = [
   {
     icon: Shield,
     title: "Reduce Operational Risk",
-    description: "Eliminate missed inspections and ensure complete data capture with offline-first technology that works anywhere, anytime."
+    description: "Eliminate missed field inspections with our offline inspection app. Ensure complete data capture with mobile inspection platform technology."
   },
   {
     icon: Zap,
     title: "Increase Efficiency", 
-    description: "Streamline your inspection process with smart forms, automated workflows, and instant report generation."
+    description: "Streamline field inspection software workflows with custom inspection forms. Our mobile inspection platform automates reporting."
   },
   {
     icon: CheckCircle,
     title: "Improve Compliance",
-    description: "Maintain perfect audit trails with timestamped records, digital signatures, and automated compliance reporting."
+    description: "Our field inspection software maintains audit trails. Use custom inspection forms with digital signatures for compliance."
   },
   {
     icon: TrendingUp,
     title: "Scale Operations",
-    description: "Support unlimited users across multiple locations with enterprise-grade infrastructure that grows with your business."
+    description: "Scale your offline inspection app across locations. Our white label inspection software supports unlimited mobile inspection users."
   }
 ];
 
@@ -80,11 +80,11 @@ export function Benefits() {
           }}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Transform Your Business Operations
+            Transform Field Operations with Our Inspection Software
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Discover how our inspection platform delivers real value 
-            to your business operations.
+            Discover how our offline inspection app and mobile inspection platform 
+            deliver real value with custom inspection forms and field inspection software.
           </p>
         </motion.div>
         
