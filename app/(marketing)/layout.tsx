@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { OrganizationSchema } from "@/components/seo/organization-schema";
+import { SocialMeta } from "@/components/seo/social-meta";
 
 export const metadata: Metadata = {
   title: {
@@ -24,12 +25,26 @@ export const metadata: Metadata = {
     title: "ProFieldWork - Offline-First Mobile Inspection Platform",
     description: "Transform your field operations with an offline-first inspection platform that works anywhere, syncs seamlessly, and adapts to your business needs.",
     siteName: "ProFieldWork",
+    images: [
+      {
+        url: "https://profieldwork.com/images/social/og/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "ProFieldWork - Offline-First Mobile Inspection Platform",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "ProFieldWork - Offline-First Mobile Inspection Platform",
     description: "Transform your field operations with an offline-first inspection platform that works anywhere, syncs seamlessly, and adapts to your business needs.",
     creator: "@profieldwork",
+    images: [
+      {
+        url: "https://profieldwork.com/images/social/twitter/twitter-default.png",
+        alt: "ProFieldWork - Offline-First Mobile Inspection Platform",
+      },
+    ],
   },
   robots: {
     index: true,
@@ -55,6 +70,7 @@ export default function MarketingLayout({ children }: MarketingLayoutProps) {
   return (
     <>
       <OrganizationSchema />
+      <SocialMeta page="default" />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-primary text-primary-foreground px-4 py-2 rounded-md"
