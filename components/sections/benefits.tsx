@@ -65,7 +65,7 @@ const benefits = [
 
 export function Benefits() {
   return (
-    <section className="py-24 bg-muted/50">
+    <section className="pt-20 pb-12 sm:py-16 md:py-24 bg-muted/50">
       <div className="container-wide bg-gradient-to-br from-muted/20 to-muted/30 rounded-3xl py-16">
         <motion.div 
           className="text-center mb-16"

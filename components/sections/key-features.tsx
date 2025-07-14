@@ -75,10 +75,10 @@ function FeaturesGrid() {
 
 export function KeyFeatures() {
   return (
-    <section id="key-features" className="relative py-24">
-      <div className="container-wide bg-muted/30 rounded-3xl py-16">
+    <section id="key-features" className="relative pt-16 pb-12 sm:py-16 md:py-24">
+      <div className="container-wide bg-muted/30 rounded-3xl py-8 sm:py-12 md:py-16">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}

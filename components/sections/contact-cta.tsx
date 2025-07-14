@@ -21,7 +21,7 @@ const trustIndicators = [
 
 export function ContactCTA() {
   return (
-    <section id="contact" className="py-24 bg-gradient-to-br from-primary/5 via-background to-muted/20">
+    <section id="contact" className="pt-20 pb-12 sm:py-16 md:py-24 bg-gradient-to-br from-primary/5 via-background to-muted/20">
       <div className="container-wide">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Column - Content */}

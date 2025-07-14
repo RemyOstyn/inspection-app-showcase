@@ -45,7 +45,7 @@ export function Header() {
               className="object-contain"
             />
           </div>
-          <span className="hidden sm:inline-block">{APP_NAME}</span>
+          <span className="inline-block">{APP_NAME}</span>
         </Link>
 
         {/* Desktop Navigation */}

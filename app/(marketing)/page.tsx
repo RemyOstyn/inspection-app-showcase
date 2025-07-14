@@ -31,11 +31,11 @@ const ProductShowcase = dynamic(
 );
 
 export const metadata: Metadata = {
-  title: "Offline Inspection App | Field Inspection Software | Mobile Platform",
+  title: "ProFieldWork - Offline Inspection Software",
   description: "Transform field operations with our offline-first inspection software. Custom forms, mobile platform, and white-label solutions for any industry. Start free trial today.",
   keywords: ["offline inspection app", "field inspection software", "mobile inspection platform", "custom inspection forms", "white label inspection software"],
   openGraph: {
-    title: "Offline Inspection App | Field Inspection Software | Mobile Platform",
+    title: "ProFieldWork - Offline Inspection Software",
     description: "Transform field operations with our offline-first inspection software. Custom forms, mobile platform, and white-label solutions for any industry. Start free trial today.",
     type: "website",
     images: [
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Offline Inspection App | Field Inspection Software | Mobile Platform",
+    title: "ProFieldWork - Offline Inspection Software",
     description: "Transform field operations with our offline-first inspection software. Custom forms, mobile platform, and white-label solutions for any industry. Start free trial today.",
     images: [
       {

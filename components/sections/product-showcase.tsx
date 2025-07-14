@@ -126,7 +126,7 @@ export function ProductShowcase() {
   const [activeTab, setActiveTab] = useState('mobile')
 
   return (
-    <section id="product-showcase" className="relative py-24 from-muted/20 to-muted/40">
+    <section id="product-showcase" className="relative pt-20 pb-12 sm:py-16 md:py-24 from-muted/20 to-muted/40">
       <div className="container-wide">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">

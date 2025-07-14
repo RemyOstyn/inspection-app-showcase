@@ -10,16 +10,18 @@ import { AnalyticsInitializer } from '@/components/analytics-initializer';
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://profieldwork.com"),
-  title: "ProFieldWork - Offline-First Mobile Inspection Solution",
+  title: "ProFieldWork - Offline Inspection Software",
   description: "Enterprise-grade offline inspection platform that works anywhere. Customizable forms, white-label ready, and trusted by 500+ companies worldwide.",
   robots: "index, follow",
   alternates: {
@@ -47,6 +49,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

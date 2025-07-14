@@ -4,7 +4,7 @@ import { SocialMeta } from "@/components/seo/social-meta";
 
 export const metadata: Metadata = {
   title: {
-    default: "ProFieldWork - Offline-First Mobile Inspection Platform",
+    default: "ProFieldWork - Offline Inspection Software",
     template: "%s | ProFieldWork",
   },
   description: "Transform your field operations with an offline-first inspection platform that works anywhere, syncs seamlessly, and adapts to your business needs.",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://profieldwork.com",
-    title: "ProFieldWork - Offline-First Mobile Inspection Platform",
+    title: "ProFieldWork - Offline Inspection Software",
     description: "Transform your field operations with an offline-first inspection platform that works anywhere, syncs seamlessly, and adapts to your business needs.",
     siteName: "ProFieldWork",
     images: [
@@ -30,19 +30,19 @@ export const metadata: Metadata = {
         url: "https://profieldwork.com/images/social/og/og-default.png",
         width: 1200,
         height: 630,
-        alt: "ProFieldWork - Offline-First Mobile Inspection Platform",
+        alt: "ProFieldWork - Offline Inspection Software",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ProFieldWork - Offline-First Mobile Inspection Platform",
+    title: "ProFieldWork - Offline Inspection Software",
     description: "Transform your field operations with an offline-first inspection platform that works anywhere, syncs seamlessly, and adapts to your business needs.",
     creator: "@profieldwork",
     images: [
       {
         url: "https://profieldwork.com/images/social/twitter/twitter-default.png",
-        alt: "ProFieldWork - Offline-First Mobile Inspection Platform",
+        alt: "ProFieldWork - Offline Inspection Software",
       },
     ],
   },
