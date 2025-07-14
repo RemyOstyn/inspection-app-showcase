@@ -1,13 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Home, Search, FileQuestion } from "lucide-react";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Page Not Found | ProFieldWork",
-  description: "The page you're looking for doesn't exist. Let us help you find what you need.",
-  robots: "noindex, nofollow",
-};
 
 export default function NotFound() {
   return (
@@ -28,7 +23,7 @@ export default function NotFound() {
           Page Not Found
         </h1>
         <p className="mb-8 text-muted-foreground">
-          Sorry, we couldn't find the page you're looking for. It might have been moved, deleted, or never existed.
+          Sorry, we couldn&apos;t find the page you&apos;re looking for. It might have been moved, deleted, or never existed.
         </p>
 
         {/* Navigation Options */}
