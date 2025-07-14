@@ -4,7 +4,8 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CookieConsent } from "@/components/cookie-consent";
-import GoogleAnalytics from "@/components/analytics/google-analytics";
+import { GoogleAnalytics } from '@next/third-parties/google';
+import { AnalyticsInitializer } from '@/components/analytics-initializer';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,14 +45,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {gaId && <GoogleAnalytics measurementId={gaId} />}
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -61,8 +59,12 @@ export default function RootLayout({
           {children}
           <Toaster />
           <CookieConsent />
+          <AnalyticsInitializer />
         </ThemeProvider>
       </body>
+      {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+      )}
     </html>
   );
 }

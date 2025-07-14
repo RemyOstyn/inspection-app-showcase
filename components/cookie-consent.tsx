@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { X, Settings, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { setAnalyticsConsent } from "@/lib/analytics";
+import { setAnalyticsConsent } from "@/lib/analytics-utils";
 
 interface CookieConsentProps {
   className?: string;
