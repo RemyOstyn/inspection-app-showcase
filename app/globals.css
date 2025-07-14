@@ -5,6 +5,26 @@
 /* Custom variant for dark mode with better specificity */
 @custom-variant dark (&:is(.dark *));
 
+/* Prevent overscroll bounce on iOS and improve mobile experience */
+html {
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  overscroll-behavior: none;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent pull-to-refresh on mobile */
+@media (max-width: 768px) {
+  body {
+    overscroll-behavior-y: contain;
+  }
+}
+
 /* 
  * Design System - Inline Theme Configuration
  * 
