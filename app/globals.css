@@ -9,6 +9,7 @@
 html {
   overscroll-behavior: none;
   -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
 }
 
 body {
@@ -18,10 +19,31 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Prevent horizontal scrolling on all elements */
+* {
+  max-width: 100%;
+}
+
+/* Prevent Framer Motion animations from causing horizontal scroll */
+[data-framer-motion] {
+  overflow-x: hidden;
+}
+
+/* Ensure containers don't overflow */
+.container-wide {
+  overflow-x: hidden;
+}
+
 /* Prevent pull-to-refresh on mobile */
 @media (max-width: 768px) {
   body {
     overscroll-behavior-y: contain;
+  }
+  
+  /* Extra protection against horizontal scroll on mobile */
+  html, body {
+    overflow-x: hidden !important;
+    position: relative;
   }
 }
 

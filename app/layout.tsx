@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { CookieConsent } from "@/components/cookie-consent";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { AnalyticsInitializer } from '@/components/analytics-initializer';
+import { ThemeColorManager } from '@/components/theme-color-manager';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,10 +43,6 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" }
-  ],
 };
 
 export default function RootLayout({
@@ -59,7 +56,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -70,6 +66,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ThemeColorManager />
           {children}
           <Toaster />
           <CookieConsent />
