@@ -51,7 +51,7 @@ export function CaseStudies() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-12 text-center"
         >
-          <Button size="lg" asChild>
+          <Button size="lg" className="cursor-pointer" asChild>
             <Link href="/case-studies">
               View All Case Studies
               <ArrowRight className="ml-2 h-4 w-4" />

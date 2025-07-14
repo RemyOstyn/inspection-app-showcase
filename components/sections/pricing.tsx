@@ -92,13 +92,13 @@ export function Pricing() {
                 Get custom pricing, dedicated support, and revenue sharing opportunities.
               </p>
               <div className="mt-8 flex items-center justify-center gap-4">
-                <Button size="lg" asChild>
+                <Button size="lg" className="cursor-pointer" asChild>
                   <Link href="/contact?type=partner">
                     <Sparkles className="mr-2 h-4 w-4" />
                     Become a Partner
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" asChild>
+                <Button size="lg" variant="outline" className="cursor-pointer" asChild>
                   <Link href="/partners">
                     Learn More
                   </Link>

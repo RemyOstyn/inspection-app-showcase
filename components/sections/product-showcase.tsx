@@ -147,17 +147,17 @@ export function ProductShowcase() {
           className="w-full"
         >
           <TabsList className="grid w-full grid-cols-3 lg:w-fit lg:mx-auto mb-12">
-            <TabsTrigger value="mobile" className="flex items-center gap-2">
+            <TabsTrigger value="mobile" className="flex items-center gap-2 cursor-pointer">
               <Smartphone className="h-4 w-4" />
               <span className="hidden sm:inline">Mobile App</span>
               <span className="sm:hidden">Mobile</span>
             </TabsTrigger>
-            <TabsTrigger value="dashboard" className="flex items-center gap-2">
+            <TabsTrigger value="dashboard" className="flex items-center gap-2 cursor-pointer">
               <Monitor className="h-4 w-4" />
               <span className="hidden sm:inline">Admin Dashboard</span>
               <span className="sm:hidden">Dashboard</span>
             </TabsTrigger>
-            <TabsTrigger value="customization" className="flex items-center gap-2">
+            <TabsTrigger value="customization" className="flex items-center gap-2 cursor-pointer">
               <Palette className="h-4 w-4" />
               <span className="hidden sm:inline">Customization</span>
               <span className="sm:hidden">Custom</span>

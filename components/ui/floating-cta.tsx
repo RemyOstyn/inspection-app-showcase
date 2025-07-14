@@ -70,7 +70,7 @@ export function FloatingCTA() {
                 size="sm"
                 variant="ghost"
                 onClick={handleDismiss}
-                className="h-6 w-6 p-0 hover:bg-muted"
+                className="h-6 w-6 p-0 hover:bg-muted cursor-pointer"
                 aria-label="Dismiss demo banner"
               >
                 <X className="h-3 w-3" />
@@ -81,7 +81,7 @@ export function FloatingCTA() {
               <Button 
                 size="sm" 
                 onClick={handleCTAClick}
-                className="flex-1"
+                className="flex-1 cursor-pointer"
                 aria-label="Request demo - scroll to contact form"
               >
                 <Calendar className="w-3 h-3 mr-1" />

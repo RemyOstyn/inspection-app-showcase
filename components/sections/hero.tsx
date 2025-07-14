@@ -72,7 +72,7 @@ export function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="min-w-[180px] bg-primary hover:bg-primary/90" asChild>
+              <Button size="lg" className="min-w-[180px] bg-primary hover:bg-primary/90 cursor-pointer" asChild>
                 <Link href="#contact" onClick={handleDemoClick} aria-label="Request a personalized demo of the inspection platform">
                   Request Demo
                 </Link>

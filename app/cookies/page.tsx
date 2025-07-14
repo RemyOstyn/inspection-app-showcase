@@ -182,17 +182,17 @@ export default function CookiePolicyPage() {
             <p className="mb-4">You can opt out of specific tracking services:</p>
             <ul className="list-disc pl-6 mb-4 space-y-2">
               <li>
-                <a href="https://tools.google.com/dlpage/gaoptout" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+                <a href="https://tools.google.com/dlpage/gaoptout" className="text-primary hover:underline cursor-pointer" target="_blank" rel="noopener noreferrer">
                   Google Analytics Opt-out
                 </a>
               </li>
               <li>
-                <a href="https://www.google.com/settings/ads" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.google.com/settings/ads" className="text-primary hover:underline cursor-pointer" target="_blank" rel="noopener noreferrer">
                   Google Ads Settings
                 </a>
               </li>
               <li>
-                <a href="https://optout.aboutads.info/" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+                <a href="https://optout.aboutads.info/" className="text-primary hover:underline cursor-pointer" target="_blank" rel="noopener noreferrer">
                   Digital Advertising Alliance Opt-out
                 </a>
               </li>
@@ -260,7 +260,7 @@ export default function CookiePolicyPage() {
             </ul>
             <p className="mb-4">
               For more information about our data practices, please see our{" "}
-              <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a>.
+              <a href="/privacy" className="text-primary hover:underline cursor-pointer">Privacy Policy</a>.
             </p>
           </section>
         </div>

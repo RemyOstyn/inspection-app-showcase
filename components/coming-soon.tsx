@@ -53,7 +53,7 @@ export function ComingSoon({
             transition={{ duration: 0.5 }}
             className="mb-12"
           >
-            <Button variant="ghost" size="sm" asChild className="group">
+            <Button variant="ghost" size="sm" asChild className="group cursor-pointer">
               <Link href="/">
                 <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
                 Back to Home
@@ -213,7 +213,7 @@ export function ComingSoon({
                           required
                           className="flex-1 h-12 bg-background/50 border-border/50 focus:border-primary"
                         />
-                        <Button type="submit" size="lg" className="px-8">
+                        <Button type="submit" size="lg" className="px-8 cursor-pointer">
                           Notify Me
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
@@ -246,7 +246,7 @@ export function ComingSoon({
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
-                className="group"
+                className="group cursor-pointer"
                 onClick={() => {
                   const contactSection = document.getElementById('contact');
                   if (contactSection) {
@@ -260,7 +260,7 @@ export function ComingSoon({
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="group"
+                className="group cursor-pointer"
                 onClick={() => {
                   // Scroll to home page since case studies are not available
                   window.location.href = '/';

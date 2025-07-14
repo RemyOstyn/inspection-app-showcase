@@ -57,7 +57,7 @@ export function Header() {
         <div className="flex items-center space-x-2">
           <ModeToggle />
           <Button 
-            className="hidden sm:inline-flex"
+            className="hidden sm:inline-flex cursor-pointer"
             onClick={() => {
               const element = document.querySelector('#contact');
               if (element) {

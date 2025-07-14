@@ -46,7 +46,7 @@ export function MobileNavigation() {
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden"
+          className="md:hidden cursor-pointer"
           aria-label="Open navigation menu"
         >
           <MenuIcon className="h-5 w-5" />

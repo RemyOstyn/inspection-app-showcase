@@ -90,7 +90,7 @@ export function PricingCard({ tier, isAnnual = false, index = 0 }: PricingCardPr
         
         <CardFooter className="p-6">
           <Button 
-            className="w-full" 
+            className="w-full cursor-pointer" 
             variant={tier.isPopular ? "default" : "outline"}
             size="lg"
             asChild

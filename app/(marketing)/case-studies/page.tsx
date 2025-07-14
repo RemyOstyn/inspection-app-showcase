@@ -104,7 +104,7 @@ export default function CaseStudiesPage() {
                   <p className="text-sm text-muted-foreground mb-6">
                     Interested in becoming our next success story?
                   </p>
-                  <Button size="lg" asChild>
+                  <Button size="lg" className="cursor-pointer" asChild>
                     <Link href="/contact">
                       Schedule a Demo
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -125,7 +125,7 @@ export default function CaseStudiesPage() {
                 Their success stories will be featured here as we help businesses 
                 transform their field operations.
               </p>
-              <Button size="lg" asChild>
+              <Button size="lg" className="cursor-pointer" asChild>
                 <Link href="/demo">
                   Become Our Next Success Story
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -147,13 +147,13 @@ export default function CaseStudiesPage() {
             with our offline-first platform. See how we can help your business.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild>
+            <Button size="lg" className="cursor-pointer" asChild>
               <Link href="/demo">
                 Schedule Your Demo
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+            <Button size="lg" variant="outline" className="cursor-pointer" asChild>
               <Link href="/contact">
                 Discuss Your Needs
                 <ArrowRight className="ml-2 h-4 w-4" />

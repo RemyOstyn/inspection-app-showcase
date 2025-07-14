@@ -100,13 +100,13 @@ export function Integrations() {
             Don&apos;t see your system? No problem. Our API and webhooks make custom integrations simple.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild>
+            <Button size="lg" className="cursor-pointer" asChild>
               <Link href="/integrations">
                 Explore All Integrations
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+            <Button size="lg" variant="outline" className="cursor-pointer" asChild>
               <Link href="/developers">
                 View API Documentation
                 <ArrowRight className="ml-2 h-4 w-4" />

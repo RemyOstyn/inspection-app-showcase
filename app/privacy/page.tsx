@@ -113,7 +113,7 @@ export default function PrivacyPolicyPage() {
             
             <p className="mb-4">
               To exercise these rights, please contact us at{" "}
-              <a href="mailto:privacy@profieldwork.com" className="text-primary hover:underline">
+              <a href="mailto:privacy@profieldwork.com" className="text-primary hover:underline cursor-pointer">
                 privacy@profieldwork.com
               </a>.
             </p>

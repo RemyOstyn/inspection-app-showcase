@@ -69,7 +69,7 @@ export function CookieConsent({ className }: CookieConsentProps) {
                 <p className="text-sm text-muted-foreground mb-4">
                   We use cookies to enhance your browsing experience, analyze site usage, and assist in our marketing efforts. 
                   By clicking &quot;Accept All&quot;, you consent to our use of cookies.{" "}
-                  <a href="/cookies" className="text-primary hover:underline">
+                  <a href="/cookies" className="text-primary hover:underline cursor-pointer">
                     Learn more about our cookies
                   </a>.
                 </p>
@@ -101,7 +101,7 @@ export function CookieConsent({ className }: CookieConsentProps) {
                 <div className="flex flex-wrap gap-2">
                   <Button 
                     onClick={handleAcceptAll}
-                    className="bg-primary text-primary-foreground hover:bg-primary/90"
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer"
                   >
                     Accept All Cookies
                   </Button>
@@ -109,6 +109,7 @@ export function CookieConsent({ className }: CookieConsentProps) {
                   <Button 
                     variant="outline" 
                     onClick={handleAcceptEssential}
+                    className="cursor-pointer"
                   >
                     Essential Only
                   </Button>
@@ -116,7 +117,7 @@ export function CookieConsent({ className }: CookieConsentProps) {
                   <Button 
                     variant="ghost" 
                     onClick={handleCustomize}
-                    className="text-primary"
+                    className="text-primary cursor-pointer"
                   >
                     <Settings className="h-4 w-4 mr-2" />
                     {showDetails ? "Hide Details" : "Customize"}
@@ -124,7 +125,7 @@ export function CookieConsent({ className }: CookieConsentProps) {
                   
                   <a 
                     href="/privacy"
-                    className="inline-flex items-center justify-center text-sm font-medium transition-colors hover:text-primary"
+                    className="inline-flex items-center justify-center text-sm font-medium transition-colors hover:text-primary cursor-pointer"
                   >
                     Privacy Policy
                   </a>
@@ -135,7 +136,7 @@ export function CookieConsent({ className }: CookieConsentProps) {
                 variant="ghost"
                 size="sm"
                 onClick={handleClose}
-                className="shrink-0"
+                className="shrink-0 cursor-pointer"
                 aria-label="Close cookie banner"
               >
                 <X className="h-4 w-4" />

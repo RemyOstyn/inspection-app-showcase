@@ -82,8 +82,18 @@ export function ContactForm() {
     setIsSubmitting(true);
     
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Submit form to API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
       
       // Track analytics events
       trackDemoRequest({
@@ -96,10 +106,10 @@ export function ContactForm() {
         type: 'demo_request'
       });
       
-      console.log("Form submitted:", formData);
       setIsSubmitted(true);
     } catch (error) {
       console.error("Form submission error:", error);
+      alert("There was an error submitting your request. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -138,6 +148,7 @@ export function ContactForm() {
             });
           }}
           variant="outline"
+          className="cursor-pointer"
         >
           Send Another Message
         </Button>
@@ -251,7 +262,7 @@ export function ContactForm() {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="flex-1"
+          className="flex-1 cursor-pointer"
         >
           {isSubmitting ? (
             <>
@@ -269,8 +280,8 @@ export function ContactForm() {
         <Button
           type="button"
           variant="outline"
-          className="flex-1"
-          onClick={() => window.open("https://calendly.com/profieldwork-demo", "_blank")}
+          className="flex-1 cursor-pointer"
+          onClick={() => window.open(process.env.NEXT_PUBLIC_CALENDLY_LINK || "https://calendly.com/profieldwork-demo", "_blank")}
           aria-label="Schedule a call (opens in new window)"
         >
           <Calendar className="w-4 h-4 mr-2" />

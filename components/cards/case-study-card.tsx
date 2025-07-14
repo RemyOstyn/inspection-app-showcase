@@ -78,7 +78,7 @@ export function CaseStudyCard({ caseStudy }: CaseStudyCardProps) {
       </CardContent>
       
       <CardFooter>
-        <Button variant="outline" className="w-full" asChild>
+        <Button variant="outline" className="w-full cursor-pointer" asChild>
           <Link href={`/case-studies/${caseStudy.id}`}>
             Read Full Case Study
             <ArrowRight className="ml-2 h-4 w-4" />

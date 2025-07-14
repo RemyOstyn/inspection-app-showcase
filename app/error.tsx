@@ -35,13 +35,13 @@ export default function Error({
             </div>
           )}
           <div className="flex flex-col gap-2">
-            <Button onClick={reset} className="w-full">
+            <Button onClick={reset} className="w-full cursor-pointer">
               Try again
             </Button>
             <Button 
               variant="outline" 
               onClick={() => window.location.href = '/'}
-              className="w-full"
+              className="w-full cursor-pointer"
             >
               Go home
             </Button>

@@ -90,7 +90,7 @@ export function Footer() {
                 required
                 className="flex-1"
               />
-              <Button type="submit" disabled={isSubscribed}>
+              <Button type="submit" disabled={isSubscribed} className="cursor-pointer">
                 {isSubscribed ? (
                   <>
                     <CheckCircle className="w-4 h-4 mr-2" />

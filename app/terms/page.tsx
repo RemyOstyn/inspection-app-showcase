@@ -101,7 +101,7 @@ export default function TermsOfServicePage() {
             <h2 className="text-2xl font-semibold mb-4">7. Privacy Policy</h2>
             <p className="mb-4">
               Your privacy is important to us. Please review our{" "}
-              <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a>, 
+              <a href="/privacy" className="text-primary hover:underline cursor-pointer">Privacy Policy</a>, 
               which also governs your use of the website, to understand our practices.
             </p>
           </section>

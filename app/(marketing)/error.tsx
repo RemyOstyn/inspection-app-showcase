@@ -41,12 +41,13 @@ export default function MarketingError({
               </div>
             )}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button onClick={reset} size="lg">
+              <Button onClick={reset} size="lg" className="cursor-pointer">
                 Try again
               </Button>
               <Button 
                 variant="outline" 
                 size="lg"
+                className="cursor-pointer"
                 onClick={() => window.location.href = '/'}
               >
                 Return home
