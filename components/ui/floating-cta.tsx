@@ -70,10 +70,10 @@ export function FloatingCTA() {
                 size="sm"
                 variant="ghost"
                 onClick={handleDismiss}
-                className="h-6 w-6 p-0 hover:bg-muted cursor-pointer"
+                className="h-8 w-8 p-0 hover:bg-muted cursor-pointer flex items-center justify-center"
                 aria-label="Dismiss demo banner"
               >
-                <X className="h-3 w-3" />
+                <X className="h-4 w-4" />
               </Button>
             </div>
             
