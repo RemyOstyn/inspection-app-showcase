@@ -74,7 +74,7 @@ This email was sent from the ProFieldWork website contact form.
         <p>In the meantime, feel free to:</p>
         <ul>
           <li><a href="${process.env.NEXT_PUBLIC_CALENDLY_LINK || 'https://calendly.com/profieldwork-demo'}">Schedule a call</a> at your convenience</li>
-          <li>Visit our <a href="https://profieldwork.com">website</a> to learn more about our features</li>
+          <li>Visit our <a href="https://www.profieldwork.com">website</a> to learn more about our features</li>
         </ul>
         <p>We look forward to showing you how ProFieldWork can transform your field operations!</p>
         <br>
@@ -87,7 +87,7 @@ We've received your demo request and will get back to you within 24 hours.
 
 In the meantime, feel free to:
 - Schedule a call at your convenience: ${process.env.NEXT_PUBLIC_CALENDLY_LINK || 'https://calendly.com/profieldwork-demo'}
-- Visit our website to learn more about our features: https://profieldwork.com
+- Visit our website to learn more about our features: https://www.profieldwork.com
 
 We look forward to showing you how ProFieldWork can transform your field operations!
 

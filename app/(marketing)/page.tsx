@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://profieldwork.com/images/social/og/og-homepage.png",
+        url: "https://www.profieldwork.com/images/social/og/og-homepage.png",
         width: 1200,
         height: 630,
         alt: "Offline Inspection App - Field Inspection Software with Mobile Platform",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     description: "Transform field operations with our offline-first inspection software. Custom forms, mobile platform, and white-label solutions for any industry. Start free trial today.",
     images: [
       {
-        url: "https://profieldwork.com/images/social/twitter/twitter-homepage.png",
+        url: "https://www.profieldwork.com/images/social/twitter/twitter-homepage.png",
         alt: "Offline Inspection App - Field Inspection Software with Mobile Platform",
       },
     ],

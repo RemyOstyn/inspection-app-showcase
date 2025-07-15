@@ -15,7 +15,7 @@ export interface SocialImageConfig {
 }
 
 const BASE_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://profieldwork.com' 
+  ? 'https://www.profieldwork.com' 
   : 'http://localhost:3000';
 
 export const SOCIAL_IMAGES: SocialImageConfig = {

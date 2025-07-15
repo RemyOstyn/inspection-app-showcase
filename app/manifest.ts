@@ -94,7 +94,7 @@ export default function manifest(): MetadataRoute.Manifest {
     related_applications: [
       {
         platform: 'webapp',
-        url: 'https://profieldwork.com/'
+        url: 'https://www.profieldwork.com/'
       }
     ],
     prefer_related_applications: false,

@@ -21,7 +21,7 @@ This guide will help you set up all required services for hosting on Vercel with
    - Currency: Your currency
 5. Choose platform: **Web**
 6. Set up web stream:
-   - Website URL: https://profieldwork.com
+   - Website URL: https://www.profieldwork.com
    - Stream name: ProFieldWork Main
 7. Copy the **Measurement ID** (format: G-XXXXXXXXXX)
 8. Add to `.env.local`: `NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX`

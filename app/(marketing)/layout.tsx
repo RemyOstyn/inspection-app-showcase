@@ -21,13 +21,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://profieldwork.com",
+    url: "https://www.profieldwork.com",
     title: "ProFieldWork - Offline Inspection Software",
     description: "Transform your field operations with an offline-first inspection platform that works anywhere, syncs seamlessly, and adapts to your business needs.",
     siteName: "ProFieldWork",
     images: [
       {
-        url: "https://profieldwork.com/images/social/og/og-default.png",
+        url: "https://www.profieldwork.com/images/social/og/og-default.png",
         width: 1200,
         height: 630,
         alt: "ProFieldWork - Offline Inspection Software",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     creator: "@profieldwork",
     images: [
       {
-        url: "https://profieldwork.com/images/social/twitter/twitter-default.png",
+        url: "https://www.profieldwork.com/images/social/twitter/twitter-default.png",
         alt: "ProFieldWork - Offline Inspection Software",
       },
     ],
