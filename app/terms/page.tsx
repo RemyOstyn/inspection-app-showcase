@@ -2,7 +2,7 @@ import { MarketingLayout } from "@/components/marketing-layout";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service - ProFieldWork",
+  title: "Terms of Service - ProFieldWork - Offline Inspection Software",
   description: "ProFieldWork&apos;s terms of service. Review our terms and conditions for using our website and services.",
   robots: "index, follow",
 };

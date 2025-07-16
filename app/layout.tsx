@@ -28,11 +28,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  icons: {
-    icon: "/images/pfw_logo.png",
-    shortcut: "/images/pfw_logo.png",
-    apple: "/images/pfw_logo.png",
-  },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'placeholder-verification-code',
   },

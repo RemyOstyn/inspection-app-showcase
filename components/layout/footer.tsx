@@ -23,17 +23,45 @@ import { trackNewsletterSignup } from "@/lib/analytics";
 export function Footer() {
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError("");
     
-    // Track newsletter signup
-    trackNewsletterSignup({ source: 'footer' });
-    
-    // TODO: Implement newsletter subscription logic
-    setIsSubscribed(true);
-    setEmail("");
-    setTimeout(() => setIsSubscribed(false), 3000);
+    try {
+      // Track newsletter signup
+      trackNewsletterSignup({ source: 'footer' });
+      
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          email,
+          source: 'footer'
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to subscribe');
+      }
+
+      setIsSubscribed(true);
+      setEmail("");
+      setTimeout(() => setIsSubscribed(false), 5000);
+      
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to subscribe');
+      setTimeout(() => setError(""), 5000);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const productLinks = [
@@ -72,38 +100,69 @@ export function Footer() {
     <footer className="bg-background border-t">
       <div className="container mx-auto px-4 py-12">
         {/* Newsletter Section */}
-        <div className="mb-12 text-center">
-          <div className="mx-auto max-w-2xl">
-            <h3 className="text-2xl font-bold mb-4">
-              Stay Updated with Field Operations Insights
-            </h3>
-            <p className="text-muted-foreground mb-6">
-              Get the latest updates on offline-first technology, industry best practices, 
-              and product announcements delivered to your inbox.
-            </p>
-            <form onSubmit={handleNewsletterSubmit} className="flex gap-2 max-w-md mx-auto">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="flex-1"
-              />
-              <Button type="submit" disabled={isSubscribed} className="cursor-pointer">
-                {isSubscribed ? (
-                  <>
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    Subscribed!
-                  </>
-                ) : (
-                  <>
-                    <Mail className="w-4 h-4 mr-2" />
-                    Subscribe
-                  </>
-                )}
-              </Button>
-            </form>
+        <div className="mb-12">
+          <div className="mx-auto max-w-4xl">
+            <div className="bg-muted/30 rounded-2xl p-8 md:p-12 text-center">
+              <div className="mx-auto max-w-2xl">
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                  Stay Updated with Field Operations Insights
+                </h3>
+                <p className="text-muted-foreground mb-8 text-lg">
+                  Get the latest updates on offline-first technology, industry best practices, 
+                  and product announcements delivered to your inbox.
+                </p>
+                
+                <form onSubmit={handleNewsletterSubmit} className="space-y-4">
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center items-center max-w-lg mx-auto">
+                    <Input
+                      type="email"
+                      placeholder="Enter your email address"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      disabled={isLoading || isSubscribed}
+                      className="h-12 text-base w-full sm:w-80 max-w-sm"
+                    />
+                    <Button 
+                      type="submit" 
+                      disabled={isLoading || isSubscribed} 
+                      className="h-12 px-6 cursor-pointer whitespace-nowrap sm:w-auto w-full"
+                    >
+                      {isLoading ? (
+                        <>
+                          <Mail className="w-4 h-4 mr-2 animate-spin" />
+                          Subscribing...
+                        </>
+                      ) : isSubscribed ? (
+                        <>
+                          <CheckCircle className="w-4 h-4 mr-2" />
+                          Subscribed!
+                        </>
+                      ) : (
+                        <>
+                          <Mail className="w-4 h-4 mr-2" />
+                          Subscribe
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                  
+                  {error && (
+                    <p className="text-destructive text-sm">{error}</p>
+                  )}
+                  
+                  {isSubscribed && (
+                    <p className="text-green-600 text-sm">
+                      🎉 Welcome aboard! Check your email for confirmation.
+                    </p>
+                  )}
+                </form>
+                
+                <p className="text-xs text-muted-foreground mt-4">
+                  No spam, unsubscribe anytime. We respect your privacy.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
