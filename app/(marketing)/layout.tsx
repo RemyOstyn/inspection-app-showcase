@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "ProFieldWork",
     images: [
       {
-        url: "https://www.profieldwork.com/images/social/og/og-default.png",
+        url: "https://www.profieldwork.com/images/social/og/og-default.webp",
         width: 1200,
         height: 630,
         alt: "ProFieldWork - Offline Inspection Software",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     creator: "@profieldwork",
     images: [
       {
-        url: "https://www.profieldwork.com/images/social/twitter/twitter-default.png",
+        url: "https://www.profieldwork.com/images/social/twitter/twitter-default.webp",
         alt: "ProFieldWork - Offline Inspection Software",
       },
     ],

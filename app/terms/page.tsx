@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Terms of Service - ProFieldWork - Offline Inspection Software",
   description: "ProFieldWork&apos;s terms of service. Review our terms and conditions for using our website and services.",
   robots: "index, follow",
+  alternates: {
+    canonical: "https://www.profieldwork.com/terms",
+  },
 };
 
 export default function TermsOfServicePage() {

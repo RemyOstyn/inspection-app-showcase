@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Cookie Policy - ProFieldWork",
   description: "ProFieldWork&apos;s cookie policy. Learn about the cookies we use and how to manage your cookie preferences.",
   robots: "index, follow",
+  alternates: {
+    canonical: "https://www.profieldwork.com/cookies",
+  },
 };
 
 export default function CookiePolicyPage() {

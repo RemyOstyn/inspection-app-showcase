@@ -93,31 +93,31 @@ const mobileScreenshots = [
   {
     title: "Dashboard Overview",
     description: "Real-time inspection status and team performance metrics",
-    src: "/images/mobile/mobile_dashboard-portrait.png",
+    src: "/images/mobile/mobile_dashboard-portrait.webp",
     alt: "Mobile dashboard showing inspection overview, quick actions, and recent activity"
   },
   {
     title: "Form Progress",
     description: "Visual progress tracking with sectioned completion status",
-    src: "/images/mobile/mobile_form_progress-portrait.png",
+    src: "/images/mobile/mobile_form_progress-portrait.webp",
     alt: "Mobile form progress screen showing section completion and progress bars"
   },
   {
     title: "Dynamic Forms",
     description: "Custom inspection forms with media capture capabilities",
-    src: "/images/mobile/mobile_form-portrait.png",
+    src: "/images/mobile/mobile_form-portrait.webp",
     alt: "Mobile form interface showing field inputs and media capture"
   },
   {
     title: "Media Comments",
     description: "Rich media annotation and commenting system",
-    src: "/images/mobile/mobile_media_comment-portrait.png",
+    src: "/images/mobile/mobile_media_comment-portrait.webp",
     alt: "Mobile media comment interface for adding notes to captured images"
   },
   {
     title: "Inspection Categories",
     description: "Organized inspection workflows by category",
-    src: "/images/mobile/mobile_form_groups-portrait.png",
+    src: "/images/mobile/mobile_form_groups-portrait.webp",
     alt: "Mobile inspection categories screen showing biosecurity inspection options"
   }
 ]
@@ -215,10 +215,14 @@ export function ProductShowcase() {
                               <Image
                                 src={screenshot.src}
                                 alt={screenshot.alt}
-                                width={300}
-                                height={500}
-                                className="w-full h-full object-contain"
+                                fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                className="object-contain"
                                 priority={index === 0}
+                                loading={index === 0 ? "eager" : "lazy"}
+                                quality={85}
+                                placeholder="blur"
+                                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                               />
                             </div>
                             <h4 className="font-semibold text-center mb-2">{screenshot.title}</h4>
@@ -244,12 +248,16 @@ export function ProductShowcase() {
                   <CardContent className="p-4">
                     <div className="aspect-video bg-gradient-to-br from-primary/5 to-primary/20 rounded-lg overflow-hidden mb-4">
                       <Image
-                        src="/images/web_dashboard.png"
+                        src="/images/web_dashboard.webp"
                         alt="Admin dashboard showing inspection overview, navigation menu, and recent inspection activity"
-                        width={800}
-                        height={450}
-                        className="w-full h-full object-cover rounded-lg"
-                        priority
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                        className="object-cover rounded-lg"
+                        priority={false}
+                        loading="lazy"
+                        quality={85}
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                       />
                     </div>
                     <div className="text-center">

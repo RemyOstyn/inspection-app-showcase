@@ -38,11 +38,13 @@ export function Header() {
         >
           <div className="h-8 w-8 flex items-center justify-center">
             <Image
-              src="/images/pfw_logo.png"
+              src="/images/pfw_logo.webp"
               alt={`${APP_NAME} Logo`}
               width={32}
               height={32}
               className="object-contain"
+              priority
+              quality={90}
             />
           </div>
           <span className="inline-block">{APP_NAME}</span>

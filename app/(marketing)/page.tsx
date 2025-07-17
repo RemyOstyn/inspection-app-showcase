@@ -32,15 +32,15 @@ const ProductShowcase = dynamic(
 
 export const metadata: Metadata = {
   title: "ProFieldWork - Offline Inspection Software",
-  description: "Transform field operations with our offline-first inspection software. Custom forms, mobile platform, and white-label solutions for any industry. Start free trial today.",
+  description: "Transform field operations with offline-first inspection software. Custom forms, mobile platform, and white-label solutions. Start free trial today.",
   keywords: ["offline inspection app", "field inspection software", "mobile inspection platform", "custom inspection forms", "white label inspection software"],
   openGraph: {
     title: "ProFieldWork - Offline Inspection Software",
-    description: "Transform field operations with our offline-first inspection software. Custom forms, mobile platform, and white-label solutions for any industry. Start free trial today.",
+    description: "Transform field operations with offline-first inspection software. Custom forms, mobile platform, and white-label solutions. Start free trial today.",
     type: "website",
     images: [
       {
-        url: "https://www.profieldwork.com/images/social/og/og-homepage.png",
+        url: "https://www.profieldwork.com/images/social/og/og-homepage.webp",
         width: 1200,
         height: 630,
         alt: "Offline Inspection App - Field Inspection Software with Mobile Platform",
@@ -50,10 +50,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "ProFieldWork - Offline Inspection Software",
-    description: "Transform field operations with our offline-first inspection software. Custom forms, mobile platform, and white-label solutions for any industry. Start free trial today.",
+    description: "Transform field operations with offline-first inspection software. Custom forms, mobile platform, and white-label solutions. Start free trial today.",
     images: [
       {
-        url: "https://www.profieldwork.com/images/social/twitter/twitter-homepage.png",
+        url: "https://www.profieldwork.com/images/social/twitter/twitter-homepage.webp",
         alt: "Offline Inspection App - Field Inspection Software with Mobile Platform",
       },
     ],

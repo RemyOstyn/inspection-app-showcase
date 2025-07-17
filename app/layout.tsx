@@ -4,8 +4,9 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CookieConsent } from "@/components/cookie-consent";
-import { GoogleAnalytics } from '@next/third-parties/google';
 import { AnalyticsInitializer } from '@/components/analytics-initializer';
+import { ClientScripts } from '@/components/analytics/client-scripts';
+import { RecaptchaProvider } from '@/components/forms/recaptcha-provider';
 import { ThemeColorManager } from '@/components/theme-color-manager';
 
 const geistSans = Geist({
@@ -61,16 +62,16 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ThemeColorManager />
-          {children}
-          <Toaster />
-          <CookieConsent />
-          <AnalyticsInitializer />
+          <RecaptchaProvider>
+            <ThemeColorManager />
+            {children}
+            <Toaster />
+            <CookieConsent />
+            <AnalyticsInitializer />
+            <ClientScripts gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+          </RecaptchaProvider>
         </ThemeProvider>
       </body>
-      {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
-      )}
     </html>
   );
 }

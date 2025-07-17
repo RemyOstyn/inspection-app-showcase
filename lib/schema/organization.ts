@@ -1,4 +1,4 @@
-import { APP_NAME, APP_DESCRIPTION, CONTACT, SOCIAL_LINKS } from '@/lib/constants';
+import { APP_NAME, APP_DESCRIPTION, CONTACT } from '@/lib/constants';
 
 export interface OrganizationSchema {
   '@context': string;
@@ -24,15 +24,13 @@ export const organizationSchema: OrganizationSchema = {
   name: APP_NAME,
   description: APP_DESCRIPTION,
   url: 'https://www.profieldwork.com',
-  logo: 'https://www.profieldwork.com/images/pfw_logo.png',
+  logo: 'https://www.profieldwork.com/images/pfw_logo.webp',
   foundingDate: '2024',
   industry: 'Software Development',
   email: CONTACT.EMAIL,
   telephone: CONTACT.PHONE,
   sameAs: [
-    SOCIAL_LINKS.LINKEDIN,
-    SOCIAL_LINKS.TWITTER,
-    SOCIAL_LINKS.GITHUB,
+    // Social links temporarily removed during SEO optimization
   ],
   address: {
     '@type': 'PostalAddress',

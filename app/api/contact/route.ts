@@ -1,12 +1,65 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY || 'dummy-key-for-build');
+
+interface RecaptchaVerificationResult {
+  success: boolean;
+  score: number;
+  action: string;
+  error?: string;
+}
+
+async function verifyRecaptcha(token: string, expectedAction: string = 'contact_form'): Promise<RecaptchaVerificationResult> {
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+  const scoreThreshold = parseFloat(process.env.RECAPTCHA_SCORE_THRESHOLD || '0.5');
+  
+  if (!secretKey) {
+    console.error('RECAPTCHA_SECRET_KEY not configured');
+    return { success: false, score: 0, action: expectedAction, error: 'Configuration error' };
+  }
+
+  try {
+    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `secret=${secretKey}&response=${token}`,
+    });
+
+    const data = await response.json();
+    
+    if (!data.success) {
+      console.error('reCAPTCHA verification failed:', data['error-codes']);
+      return { success: false, score: 0, action: expectedAction, error: 'Verification failed' };
+    }
+    
+    // Check if the action matches (important for v3)
+    if (data.action !== expectedAction) {
+      console.error(`reCAPTCHA action mismatch: expected ${expectedAction}, got ${data.action}`);
+      return { success: false, score: data.score || 0, action: data.action, error: 'Action mismatch' };
+    }
+    
+    // Check score threshold
+    const score = data.score || 0;
+    const success = score >= scoreThreshold;
+    
+    if (!success) {
+      console.warn(`reCAPTCHA score too low: ${score} < ${scoreThreshold}`);
+    }
+    
+    return { success, score, action: data.action, error: success ? undefined : 'Score too low' };
+  } catch (error) {
+    console.error('reCAPTCHA verification failed:', error);
+    return { success: false, score: 0, action: expectedAction, error: 'Network error' };
+  }
+}
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, company, phone, industry, message } = body;
+    const { name, email, company, phone, industry, message, recaptchaToken } = body;
 
     // Validate required fields
     if (!name || !email || !company || !message) {
@@ -15,6 +68,42 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Verify reCAPTCHA v3
+    if (!recaptchaToken) {
+      return NextResponse.json(
+        { error: 'reCAPTCHA verification required' },
+        { status: 400 }
+      );
+    }
+
+    const recaptchaResult = await verifyRecaptcha(recaptchaToken, 'contact_form');
+    if (!recaptchaResult.success) {
+      console.error('reCAPTCHA verification failed:', {
+        score: recaptchaResult.score,
+        action: recaptchaResult.action,
+        error: recaptchaResult.error
+      });
+      
+      return NextResponse.json(
+        { 
+          error: 'Security verification failed. Please try again.',
+          details: process.env.NODE_ENV === 'development' ? {
+            score: recaptchaResult.score,
+            threshold: parseFloat(process.env.RECAPTCHA_SCORE_THRESHOLD || '0.5'),
+            error: recaptchaResult.error
+          } : undefined
+        },
+        { status: 400 }
+      );
+    }
+    
+    // Log successful verification for monitoring
+    console.log('reCAPTCHA verification successful:', {
+      score: recaptchaResult.score,
+      action: recaptchaResult.action,
+      company: company // for spam analysis
+    });
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({

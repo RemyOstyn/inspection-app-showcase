@@ -35,6 +35,6 @@ export const caseStudies: CaseStudy[] = [
       author: "",
       role: ""
     },
-    image: "/images/case-study-freightplus.jpg"
+    image: "/images/case-study-freightplus.webp"
   }
 ];

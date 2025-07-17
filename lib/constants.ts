@@ -122,12 +122,12 @@ export const CONTACT = {
   ADDRESS: 'Contact us for more information',
 } as const;
 
-// Social links
-export const SOCIAL_LINKS = {
-  TWITTER: 'https://twitter.com/profieldwork',
-  LINKEDIN: 'https://linkedin.com/company/profieldwork',
-  GITHUB: 'https://github.com/profieldwork',
-} as const;
+// Social links (temporarily removed)
+// export const SOCIAL_LINKS = {
+//   TWITTER: 'https://twitter.com/profieldwork',
+//   LINKEDIN: 'https://linkedin.com/company/profieldwork',
+//   GITHUB: 'https://github.com/profieldwork',
+// } as const;
 
 // SEO keywords
 export const SEO_KEYWORDS = [

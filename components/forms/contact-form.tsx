@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { Send, Calendar, Mail, Building2, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -35,6 +36,8 @@ export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Partial<ContactFormData>>({});
+  const [recaptchaError, setRecaptchaError] = useState<string>('');
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const industries = [
     "Equipment Rental",
@@ -68,6 +71,8 @@ export function ContactForm() {
       newErrors.message = "Message is required";
     }
 
+    // reCAPTCHA v3 verification is handled in handleSubmit
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -80,15 +85,30 @@ export function ContactForm() {
     }
 
     setIsSubmitting(true);
+    setRecaptchaError('');
     
     try {
-      // Submit form to API
+      // Execute reCAPTCHA v3 verification
+      if (!executeRecaptcha) {
+        throw new Error('reCAPTCHA not loaded');
+      }
+
+      const recaptchaToken = await executeRecaptcha('contact_form');
+      
+      if (!recaptchaToken) {
+        throw new Error('reCAPTCHA verification failed');
+      }
+
+      // Submit form to API with reCAPTCHA token
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          recaptchaToken
+        }),
       });
 
       if (!response.ok) {
@@ -109,7 +129,13 @@ export function ContactForm() {
       setIsSubmitted(true);
     } catch (error) {
       console.error("Form submission error:", error);
-      alert("There was an error submitting your request. Please try again.");
+      const errorMessage = error instanceof Error ? error.message : 'There was an error submitting your request. Please try again.';
+      
+      if (errorMessage.includes('reCAPTCHA')) {
+        setRecaptchaError(errorMessage);
+      } else {
+        alert(errorMessage);
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -157,8 +183,9 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Name Field */}
         <div className="space-y-2">
           <Label htmlFor="name" className="flex items-center gap-2">
@@ -289,9 +316,38 @@ export function ContactForm() {
         </Button>
       </div>
       
+      {recaptchaError && (
+        <div className="text-center p-3 bg-red-50 border border-red-200 rounded-lg">
+          <p className="text-red-600 text-sm">{recaptchaError}</p>
+        </div>
+      )}
+      
       <p className="text-sm text-muted-foreground text-center">
         We respect your privacy. Your information will never be shared with third parties.
       </p>
-    </form>
+      
+      <div className="text-xs text-muted-foreground text-center">
+        This site is protected by reCAPTCHA and the Google{' '}
+        <a 
+          href="https://policies.google.com/privacy" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="underline hover:text-foreground"
+        >
+          Privacy Policy
+        </a>{' '}
+        and{' '}
+        <a 
+          href="https://policies.google.com/terms" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="underline hover:text-foreground"
+        >
+          Terms of Service
+        </a>{' '}
+        apply.
+      </div>
+      </form>
+    </div>
   );
 }

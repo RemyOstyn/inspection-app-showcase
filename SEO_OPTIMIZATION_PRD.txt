@@ -1,0 +1,330 @@
+PRODUCT REQUIREMENTS DOCUMENT
+SEO Optimization for Inspection App Showcase Website
+Version 1.0
+Date: 2025-07-17
+
+==============================================================================
+EXECUTIVE SUMMARY
+==============================================================================
+
+This PRD outlines the implementation requirements for SEO optimization improvements 
+identified by an expert review. The changes focus on performance optimization, 
+technical SEO fixes, and user experience improvements that will enhance search 
+rankings and site performance.
+
+==============================================================================
+OBJECTIVES
+==============================================================================
+
+1. Improve Core Web Vitals scores through image and JavaScript optimization
+2. Fix technical SEO issues (canonical links, robots.txt)
+3. Enhance site security with reCAPTCHA integration
+4. Streamline user experience by removing unused features
+5. Achieve Lighthouse performance score >90
+
+==============================================================================
+SCOPE OF WORK
+==============================================================================
+
+1. IMAGE OPTIMIZATION - Convert all images to WebP format
+2. ROBOTS.TXT - Remove crawl delay restriction
+3. SOCIAL LINKS - Remove all social media links temporarily
+4. CANONICAL LINKS - Fix duplicate content issues
+5. HEADING STRUCTURE - Fix duplicate headings (if any)
+6. JAVASCRIPT OPTIMIZATION - Implement delayed loading for non-critical scripts
+7. LAZY LOADING - Implement for below-fold images
+8. NEWSLETTER REMOVAL - Remove subscription functionality
+9. FORM SECURITY - Add reCAPTCHA to contact form
+
+==============================================================================
+TECHNICAL IMPLEMENTATION DETAILS
+==============================================================================
+
+## 1. CONVERT IMAGES TO WEBP FORMAT
+
+### Current State:
+- All images are in PNG/JPG format
+- Located in /public/images/ and subdirectories
+- Using next/image component for optimization
+
+### Files to Convert:
+/public/images/
+├── pfw_logo.png → pfw_logo.webp
+├── icon-192x192.png → icon-192x192.webp
+├── icon-512x512.png → icon-512x512.webp
+├── web_dashboard.png → web_dashboard.webp
+├── case-study-freightplus.jpg → case-study-freightplus.webp
+├── mobile/
+│   ├── form_2.png → form_2.webp
+│   ├── form_builder.png → form_builder.webp
+│   ├── home_ss.png → home_ss.webp
+│   ├── inspection_card_ss.png → inspection_card_ss.webp
+│   ├── login_ss.png → login_ss.webp
+│   └── machine_card_ss.png → machine_card_ss.webp
+└── social/
+    ├── og/*.png → *.webp
+    └── twitter/*.png → *.webp
+
+### Files to Update After Conversion:
+- /app/manifest.ts (lines with icon references)
+- /components/layout/header.tsx (logo reference)
+- /components/layout/footer.tsx (logo reference)
+- /data/case-studies.ts (case study image)
+- /app/page.tsx (mobile screenshots)
+- /lib/metadata.ts (social media images)
+- All metadata configurations in page files
+
+### Implementation Notes:
+- Use sharp or imagemin for batch conversion
+- Maintain original dimensions
+- Set quality to 85% for optimal size/quality balance
+- Keep PNG versions for manifest icons (PWA requirement)
+
+==============================================================================
+
+## 2. REMOVE CRAWL DELAY FROM ROBOTS.TXT
+
+### Current Implementation:
+File: /app/robots.ts (lines 25-30)
+
+Current Googlebot rules include:
+- Crawl-delay: 1
+
+### Required Change:
+Remove the crawl-delay directive from Googlebot rules while maintaining 
+other directives.
+
+==============================================================================
+
+## 3. REMOVE SOCIAL MEDIA LINKS
+
+### Files to Modify:
+1. /lib/constants.ts (lines 126-130)
+   - Comment out or remove SOCIAL_LINKS constant
+
+2. /components/layout/footer.tsx (lines 84-102)
+   - Remove entire social links section
+   - Remove related imports (Mail icon)
+
+==============================================================================
+
+## 4. FIX CANONICAL LINKS
+
+### Current Issue:
+Privacy, Cookie, and Terms pages inherit canonical from root layout pointing 
+to homepage, causing duplicate content issues.
+
+### Files to Modify:
+1. /app/privacy/page.tsx
+   - Add canonical: 'https://www.profieldwork.com/privacy' to metadata
+
+2. /app/cookies/page.tsx
+   - Add canonical: 'https://www.profieldwork.com/cookies' to metadata
+
+3. /app/terms/page.tsx
+   - Add canonical: 'https://www.profieldwork.com/terms' to metadata
+
+==============================================================================
+
+## 5. HEADING STRUCTURE VERIFICATION
+
+### Current Analysis:
+No duplicate H2/H3 headings found in homepage. Structure is semantically correct.
+
+### Action Required:
+None - heading structure is already optimized.
+
+==============================================================================
+
+## 6. JAVASCRIPT DELAYED LOADING
+
+### Current Implementation:
+- Google Analytics loads at end of HTML using @next/third-parties
+- No Google Tag Manager implementation found
+
+### Required Changes:
+
+1. Create a ClientScripts component for delayed loading:
+   File: /components/analytics/client-scripts.tsx
+   - Use dynamic imports with { ssr: false }
+   - Implement IntersectionObserver or setTimeout for delay
+   - Load after 3-5 seconds or on user interaction
+
+2. Modify /app/layout.tsx:
+   - Move GoogleAnalytics component to ClientScripts
+   - Implement conditional loading based on user consent
+
+3. For any future third-party scripts:
+   - Use Next.js Script component with strategy="lazyOnload"
+   - Implement proper loading priorities
+
+==============================================================================
+
+## 7. LAZY LOADING FOR IMAGES
+
+### Current State:
+- Some images have priority loading (first mobile screenshot)
+- Most images load immediately
+
+### Implementation Plan:
+
+1. Update /app/page.tsx (ProductShowcase component):
+   - Remove priority from all mobile screenshots except first
+   - Add loading="lazy" to images below fold
+   - Implement blur placeholder for better UX
+
+2. Update /components/ui/case-study-card.tsx:
+   - Add loading="lazy" to case study images
+   - Implement placeholder blur
+
+3. Create a LazyImage wrapper component:
+   File: /components/ui/lazy-image.tsx
+   - Wrapper around next/image
+   - Implements IntersectionObserver for below-fold detection
+   - Automatic lazy loading for non-priority images
+
+==============================================================================
+
+## 8. REMOVE NEWSLETTER SUBSCRIPTION
+
+### Files to Delete:
+- /app/api/newsletter/route.ts
+- /emails/newsletter-welcome.tsx
+
+### Files to Modify:
+1. /components/layout/footer.tsx (lines 103-167)
+   - Remove entire newsletter section
+   - Remove related state and imports
+   - Remove handleNewsletterSubmit function
+
+2. /lib/analytics.ts
+   - Remove trackNewsletterSignup function if exists
+
+==============================================================================
+
+## 9. ADD RECAPTCHA TO CONTACT FORM
+
+### Implementation Requirements:
+
+1. Install @google-recaptcha/react package
+
+2. Create ReCAPTCHA wrapper component:
+   File: /components/forms/recaptcha-wrapper.tsx
+   - Implement Google reCAPTCHA v3
+   - Handle token generation
+   - Pass token to form submission
+
+3. Update /components/forms/contact-form.tsx:
+   - Import and wrap form with ReCAPTCHA
+   - Add reCAPTCHA token to form submission
+   - Show reCAPTCHA badge
+
+4. Update /app/api/contact/route.ts:
+   - Verify reCAPTCHA token server-side
+   - Reject submissions with invalid tokens
+   - Add rate limiting
+
+5. Add environment variables:
+   - NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+   - RECAPTCHA_SECRET_KEY
+
+==============================================================================
+PERFORMANCE IMPACT ANALYSIS
+==============================================================================
+
+Expected Improvements:
+1. Image Format Change (PNG/JPG → WebP): 25-35% reduction in image size
+2. Lazy Loading Images: 40-50% reduction in initial page load
+3. Delayed JavaScript: 15-20% improvement in Time to Interactive
+4. Removal of Newsletter: Minor reduction in DOM complexity
+
+Target Metrics:
+- First Contentful Paint: <1.5s
+- Largest Contentful Paint: <2.5s
+- Time to Interactive: <3.5s
+- Cumulative Layout Shift: <0.1
+- Lighthouse Performance Score: >90
+
+==============================================================================
+IMPLEMENTATION PRIORITY
+==============================================================================
+
+Phase 1 (Critical - Immediate):
+1. Fix canonical links (SEO critical)
+2. Remove crawl delay (SEO critical)
+3. Remove social media links (broken functionality)
+
+Phase 2 (High Priority - Within 1 week):
+4. Convert images to WebP
+5. Implement lazy loading
+6. Add reCAPTCHA to contact form
+
+Phase 3 (Medium Priority - Within 2 weeks):
+7. Implement JavaScript delayed loading
+8. Remove newsletter functionality
+
+==============================================================================
+TESTING REQUIREMENTS
+==============================================================================
+
+1. Cross-browser Testing:
+   - Chrome, Firefox, Safari, Edge
+   - Mobile browsers (iOS Safari, Chrome Mobile)
+
+2. Performance Testing:
+   - Run Lighthouse before/after each change
+   - Test Core Web Vitals with Web Vitals extension
+   - Use WebPageTest for detailed analysis
+
+3. SEO Testing:
+   - Verify canonical links with SEO tools
+   - Test robots.txt with Google Search Console
+   - Check structured data validity
+
+4. Functionality Testing:
+   - Contact form submission with reCAPTCHA
+   - Image loading on slow connections
+   - JavaScript functionality with delayed loading
+
+==============================================================================
+ROLLBACK PLAN
+==============================================================================
+
+1. Keep backup of original image files
+2. Use feature flags for JavaScript loading changes
+3. Implement changes incrementally with git commits
+4. Monitor Google Search Console for indexing issues
+5. Have original robots.txt configuration documented
+
+==============================================================================
+SUCCESS CRITERIA
+==============================================================================
+
+1. Lighthouse Performance Score ≥ 90
+2. All images converted to WebP (except PWA icons)
+3. No crawl delay in robots.txt
+4. Correct canonical URLs on all pages
+5. ReCAPTCHA functioning on contact form
+6. No broken functionality after changes
+7. Improved Core Web Vitals scores
+
+==============================================================================
+NOTES AND CONSIDERATIONS
+==============================================================================
+
+1. WebP Fallbacks: Consider implementing picture element with fallbacks for 
+   older browsers if needed
+
+2. CDN Integration: Future consideration for image delivery optimization
+
+3. Build Process: May need to update build scripts for automated image 
+   conversion
+
+4. Monitoring: Set up performance monitoring to track improvements over time
+
+5. Documentation: Update README.md with new development practices for images 
+   and performance
+
+==============================================================================
+END OF DOCUMENT
+==============================================================================

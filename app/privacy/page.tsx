@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Privacy Policy - ProFieldWork",
   description: "ProFieldWork&aposs privacy policy. Learn how we collect, use, and protect your personal information.",
   robots: "index, follow",
+  alternates: {
+    canonical: "https://www.profieldwork.com/privacy",
+  },
 };
 
 export default function PrivacyPolicyPage() {

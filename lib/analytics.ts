@@ -74,18 +74,5 @@ export const trackContactFormSubmit = (data?: { industry?: string; type?: string
   }
 };
 
-/**
- * Track newsletter subscription
- */
-export const trackNewsletterSignup = (data?: { source?: string }) => {
-  try {
-    sendGAEvent('event', 'newsletter_signup', {
-      event_category: 'engagement',
-      event_label: data?.source || 'footer',
-      source: data?.source || 'footer',
-    });
-  } catch {
-    // Silently handle errors
-  }
-};
+// Newsletter tracking removed as per SEO optimization plan
 

@@ -70,23 +70,23 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
     screenshots: [
       {
-        src: '/images/mobile/mobile_dashboard-portrait.png',
+        src: '/images/mobile/mobile_dashboard-portrait.webp',
         sizes: '1419x2796',
-        type: 'image/png',
+        type: 'image/webp',
         form_factor: 'narrow',
         label: 'Mobile Dashboard - Manage inspections on the go'
       },
       {
-        src: '/images/mobile/mobile_form-portrait.png', 
+        src: '/images/mobile/mobile_form-portrait.webp', 
         sizes: '1419x2796',
-        type: 'image/png',
+        type: 'image/webp',
         form_factor: 'narrow',
         label: 'Dynamic Form Builder - Customize for any industry'
       },
       {
-        src: '/images/web_dashboard.png',
+        src: '/images/web_dashboard.webp',
         sizes: '1424x770',
-        type: 'image/png',
+        type: 'image/webp',
         form_factor: 'wide',
         label: 'Web Dashboard - Comprehensive analytics and management'
       }

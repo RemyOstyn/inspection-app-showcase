@@ -20,28 +20,28 @@ const BASE_URL = process.env.NODE_ENV === 'production'
 
 export const SOCIAL_IMAGES: SocialImageConfig = {
   homepage: {
-    og: `${BASE_URL}/images/social/og/og-homepage.png`,
-    twitter: `${BASE_URL}/images/social/twitter/twitter-homepage.png`,
+    og: `${BASE_URL}/images/social/og/og-homepage.webp`,
+    twitter: `${BASE_URL}/images/social/twitter/twitter-homepage.webp`,
     alt: `${APP_NAME} - Transform Your Field Operations with Offline-First Mobile Inspection Platform`,
   },
   features: {
-    og: `${BASE_URL}/images/social/og/og-features.png`,
-    twitter: `${BASE_URL}/images/social/twitter/twitter-features.png`,
+    og: `${BASE_URL}/images/social/og/og-features.webp`,
+    twitter: `${BASE_URL}/images/social/twitter/twitter-features.webp`,
     alt: `${APP_NAME} - 6 Key Features for Offline-First Field Operations`,
   },
   useCases: {
-    og: `${BASE_URL}/images/social/og/og-use-cases.png`,
-    twitter: `${BASE_URL}/images/social/twitter/twitter-use-cases.png`,
+    og: `${BASE_URL}/images/social/og/og-use-cases.webp`,
+    twitter: `${BASE_URL}/images/social/twitter/twitter-use-cases.webp`,
     alt: `${APP_NAME} - Solutions for Equipment Rental, Property Management, Fleet Management & More`,
   },
   demo: {
-    og: `${BASE_URL}/images/social/og/og-demo.png`,
-    twitter: `${BASE_URL}/images/social/twitter/twitter-demo.png`,
+    og: `${BASE_URL}/images/social/og/og-demo.webp`,
+    twitter: `${BASE_URL}/images/social/twitter/twitter-demo.webp`,
     alt: `${APP_NAME} - See the Mobile Inspection Platform in Action`,
   },
   default: {
-    og: `${BASE_URL}/images/social/og/og-default.png`,
-    twitter: `${BASE_URL}/images/social/twitter/twitter-default.png`,
+    og: `${BASE_URL}/images/social/og/og-default.webp`,
+    twitter: `${BASE_URL}/images/social/twitter/twitter-default.webp`,
     alt: `${APP_NAME} - Offline-First Mobile Inspection Platform`,
   },
 };

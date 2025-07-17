@@ -12,7 +12,6 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: 'Googlebot',
         allow: '/',
-        crawlDelay: 1,
       },
       {
         userAgent: 'Bingbot',
