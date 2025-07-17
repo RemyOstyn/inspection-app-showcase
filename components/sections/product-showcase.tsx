@@ -141,32 +141,32 @@ export function ProductShowcase() {
           </p>
         </div>
 
-        <Tabs 
-          value={activeTab} 
-          onValueChange={setActiveTab} 
-          className="w-full"
-        >
-          <TabsList className="grid w-full grid-cols-3 lg:w-fit lg:mx-auto mb-12">
-            <TabsTrigger value="mobile" className="flex items-center gap-2 cursor-pointer">
-              <Smartphone className="h-4 w-4" />
-              <span className="hidden sm:inline">Mobile App</span>
-              <span className="sm:hidden">Mobile</span>
-            </TabsTrigger>
-            <TabsTrigger value="dashboard" className="flex items-center gap-2 cursor-pointer">
-              <Monitor className="h-4 w-4" />
-              <span className="hidden sm:inline">Admin Dashboard</span>
-              <span className="sm:hidden">Dashboard</span>
-            </TabsTrigger>
-            <TabsTrigger value="customization" className="flex items-center gap-2 cursor-pointer">
-              <Palette className="h-4 w-4" />
-              <span className="hidden sm:inline">Customization</span>
-              <span className="sm:hidden">Custom</span>
-            </TabsTrigger>
-          </TabsList>
+        {/* Tabs for tablet and desktop */}
+        <div className="hidden md:block">
+          <Tabs 
+            value={activeTab} 
+            onValueChange={setActiveTab} 
+            className="w-full"
+          >
+            <TabsList className="grid w-full grid-cols-3 lg:w-fit lg:mx-auto mb-12">
+              <TabsTrigger value="mobile" className="flex items-center gap-2 cursor-pointer">
+                <Smartphone className="h-4 w-4" />
+                <span>Mobile App</span>
+              </TabsTrigger>
+              <TabsTrigger value="dashboard" className="flex items-center gap-2 cursor-pointer">
+                <Monitor className="h-4 w-4" />
+                <span>Admin Dashboard</span>
+              </TabsTrigger>
+              <TabsTrigger value="customization" className="flex items-center gap-2 cursor-pointer">
+                <Palette className="h-4 w-4" />
+                <span>Customization</span>
+              </TabsTrigger>
+            </TabsList>
 
           <TabsContent value="mobile" className="space-y-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-8">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-8 gap-8 items-center">
+                <div className="space-y-8 lg:col-span-5">
                 <div>
                   <Badge variant="secondary" className="mb-4">
                     Field Operations
@@ -174,7 +174,7 @@ export function ProductShowcase() {
                   <h3 className="text-2xl font-bold text-foreground mb-4">
                     Offline Inspection App Built for the Field
                   </h3>
-                  <p className="text-muted-foreground text-lg">
+                  <p className="text-muted-foreground text-lg max-w-2xl">
                     Our mobile inspection platform works without internet. Create custom inspection forms, 
                     capture media offline, and sync field inspection data automatically.
                   </p>
@@ -204,20 +204,20 @@ export function ProductShowcase() {
                 </div>
               </div>
 
-              <div className="relative">
-                <Carousel className="w-full max-w-md mx-auto">
+              <div className="relative flex justify-center items-center lg:col-span-3">
+                <Carousel className="w-full max-w-sm">
                   <CarouselContent>
                     {mobileScreenshots.map((screenshot, index) => (
                       <CarouselItem key={index}>
                         <Card className="border-0 shadow-xl">
-                          <CardContent className="p-6">
-                            <div className="aspect-[3/5] bg-gradient-to-br from-primary/5 to-primary/20 rounded-lg overflow-hidden mb-4 flex items-center justify-center">
+                          <CardContent className="p-4">
+                            <div className="relative w-full h-[480px] bg-gradient-to-br from-primary/5 to-primary/20 rounded-lg overflow-hidden mb-4">
                               <Image
                                 src={screenshot.src}
                                 alt={screenshot.alt}
                                 fill
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                className="object-contain"
+                                sizes="400px"
+                                className="object-contain object-center"
                                 priority={index === 0}
                                 loading={index === 0 ? "eager" : "lazy"}
                                 quality={85}
@@ -238,24 +238,26 @@ export function ProductShowcase() {
                   <CarouselNext className="right-2" />
                 </Carousel>
               </div>
+              </div>
             </div>
           </TabsContent>
 
           <TabsContent value="dashboard" className="space-y-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="relative order-2 lg:order-1">
-                <Card className="shadow-xl border-0">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="relative order-2 lg:order-1 flex justify-center">
+                <Card className="shadow-xl border-0 w-full max-w-xl">
                   <CardContent className="p-4">
-                    <div className="aspect-video bg-gradient-to-br from-primary/5 to-primary/20 rounded-lg overflow-hidden mb-4">
+                    <div className="relative w-full h-[350px] bg-gradient-to-br from-primary/5 to-primary/20 rounded-lg overflow-hidden mb-4">
                       <Image
                         src="/images/web_dashboard.webp"
                         alt="Admin dashboard showing inspection overview, navigation menu, and recent inspection activity"
                         fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                        className="object-cover rounded-lg"
+                        sizes="600px"
+                        className="object-contain object-center"
                         priority={false}
                         loading="lazy"
-                        quality={85}
+                        quality={90}
                         placeholder="blur"
                         blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                       />
@@ -278,7 +280,7 @@ export function ProductShowcase() {
                   <h3 className="text-2xl font-bold text-foreground mb-4">
                     Field Inspection Software Dashboard
                   </h3>
-                  <p className="text-muted-foreground text-lg">
+                  <p className="text-muted-foreground text-lg max-w-2xl">
                     Manage your mobile inspection platform from a centralized dashboard. 
                     Build custom inspection forms, assign field inspections, and track offline inspection app usage.
                   </p>
@@ -307,11 +309,13 @@ export function ProductShowcase() {
                   })}
                 </div>
               </div>
+              </div>
             </div>
           </TabsContent>
 
           <TabsContent value="customization" className="space-y-12">
-            <div className="text-center mb-12">
+            <div className="max-w-7xl mx-auto">
+              <div className="text-center mb-12">
               <Badge variant="secondary" className="mb-4">
                 White-Label Ready
               </Badge>
@@ -322,9 +326,233 @@ export function ProductShowcase() {
                 Deploy white label inspection software with your branding. Customize our offline inspection app 
                 and mobile inspection platform to deliver field inspection software under your brand.
               </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {customizationOptions.map((option, index) => (
+                <Card key={index} className="relative overflow-hidden">
+                  <CardContent className="p-6">
+                    <div className="mb-4">
+                      <h4 className="text-lg font-semibold text-foreground mb-2">
+                        {option.title}
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        {option.description}
+                      </p>
+                    </div>
+                    <ul className="space-y-2">
+                      {option.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center text-sm">
+                          <CheckCircle className="h-4 w-4 text-green-600 mr-2 flex-shrink-0" />
+                          <span className="text-muted-foreground">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              ))}
+              </div>
+            </div>
+          </TabsContent>
+        </Tabs>
+        </div>
+
+        {/* Sequential sections for mobile */}
+        <div className="md:hidden space-y-16">
+          {/* Mobile App Section */}
+          <div className="space-y-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2 rounded-lg bg-primary/10">
+                <Smartphone className="h-5 w-5 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold">Mobile App</h3>
+            </div>
+            
+            <div className="space-y-8">
+              <div>
+                <Badge variant="secondary" className="mb-4">
+                  Field Operations
+                </Badge>
+                <h3 className="text-2xl font-bold text-foreground mb-4">
+                  Offline Inspection App Built for the Field
+                </h3>
+                <p className="text-muted-foreground text-lg">
+                  Our mobile inspection platform works without internet. Create custom inspection forms, 
+                  capture media offline, and sync field inspection data automatically.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-6">
+                {mobileFeatures.map((feature, index) => {
+                  const Icon = feature.icon
+                  return (
+                    <div key={index} className="flex items-start space-x-3">
+                      <div className="flex-shrink-0">
+                        <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary/10">
+                          <Icon className="h-5 w-5 text-primary" />
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-foreground">
+                          {feature.title}
+                        </h4>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          {feature.description}
+                        </p>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="relative flex justify-center items-center">
+              <Carousel className="w-full max-w-sm">
+                <CarouselContent>
+                  {mobileScreenshots.map((screenshot, index) => (
+                    <CarouselItem key={index}>
+                      <Card className="border-0 shadow-xl">
+                        <CardContent className="p-4">
+                          <div className="relative w-full h-[480px] bg-gradient-to-br from-primary/5 to-primary/20 rounded-lg overflow-hidden mb-4">
+                            <Image
+                              src={screenshot.src}
+                              alt={screenshot.alt}
+                              fill
+                              sizes="400px"
+                              className="object-contain object-center"
+                              priority={index === 0}
+                              loading={index === 0 ? "eager" : "lazy"}
+                              quality={85}
+                              placeholder="blur"
+                              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                            />
+                          </div>
+                          <h4 className="font-semibold text-center mb-2">{screenshot.title}</h4>
+                          <p className="text-sm text-muted-foreground text-center">
+                            {screenshot.description}
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-2" />
+                <CarouselNext className="right-2" />
+              </Carousel>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t" />
+            </div>
+          </div>
+
+          {/* Admin Dashboard Section */}
+          <div className="space-y-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2 rounded-lg bg-primary/10">
+                <Monitor className="h-5 w-5 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold">Admin Dashboard</h3>
+            </div>
+
+            <div className="relative flex justify-center mb-8">
+              <Card className="shadow-xl border-0 w-full">
+                <CardContent className="p-4">
+                  <div className="relative w-full h-[250px] bg-gradient-to-br from-primary/5 to-primary/20 rounded-lg overflow-hidden mb-4">
+                    <Image
+                      src="/images/web_dashboard.webp"
+                      alt="Admin dashboard showing inspection overview, navigation menu, and recent inspection activity"
+                      fill
+                      sizes="600px"
+                      className="object-contain object-center"
+                      loading="lazy"
+                      quality={90}
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                    />
+                  </div>
+                  <div className="text-center">
+                    <h4 className="font-semibold text-lg mb-2">Admin Dashboard</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Complete overview of inspection activities, team performance, and system status
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="space-y-8">
+              <div>
+                <Badge variant="secondary" className="mb-4">
+                  Command Center
+                </Badge>
+                <h3 className="text-2xl font-bold text-foreground mb-4">
+                  Field Inspection Software Dashboard
+                </h3>
+                <p className="text-muted-foreground text-lg">
+                  Manage your mobile inspection platform from a centralized dashboard. 
+                  Build custom inspection forms, assign field inspections, and track offline inspection app usage.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-6">
+                {adminFeatures.map((feature, index) => {
+                  const Icon = feature.icon
+                  return (
+                    <div key={index} className="flex items-start space-x-3">
+                      <div className="flex-shrink-0">
+                        <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary/10">
+                          <Icon className="h-5 w-5 text-primary" />
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className="text-base font-semibold text-foreground">
+                          {feature.title}
+                        </h4>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          {feature.description}
+                        </p>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t" />
+            </div>
+          </div>
+
+          {/* Customization Section */}
+          <div className="space-y-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2 rounded-lg bg-primary/10">
+                <Palette className="h-5 w-5 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold">Customization</h3>
+            </div>
+
+            <div className="text-center mb-12">
+              <Badge variant="secondary" className="mb-4">
+                White-Label Ready
+              </Badge>
+              <h3 className="text-2xl font-bold text-foreground mb-4">
+                White Label Inspection Software
+              </h3>
+              <p className="text-muted-foreground text-lg">
+                Deploy white label inspection software with your branding. Customize our offline inspection app 
+                and mobile inspection platform to deliver field inspection software under your brand.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6">
               {customizationOptions.map((option, index) => (
                 <Card key={index} className="relative overflow-hidden">
                   <CardContent className="p-6">
@@ -348,9 +576,8 @@ export function ProductShowcase() {
                 </Card>
               ))}
             </div>
-
-          </TabsContent>
-        </Tabs>
+          </div>
+        </div>
       </div>
     </section>
   )
