@@ -4,8 +4,8 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CookieConsent } from "@/components/cookie-consent";
-import { AnalyticsInitializer } from '@/components/analytics-initializer';
-import { ClientScripts } from '@/components/analytics/client-scripts';
+import { GoogleAnalytics } from '@next/third-parties/google';
+import { AnalyticsConsentInit } from '@/components/analytics-consent-init';
 import { RecaptchaProvider } from '@/components/forms/recaptcha-provider';
 import { ThemeColorManager } from '@/components/theme-color-manager';
 
@@ -61,11 +61,13 @@ export default function RootLayout({
         >
           <RecaptchaProvider>
             <ThemeColorManager />
+            <AnalyticsConsentInit />
             {children}
             <Toaster />
             <CookieConsent />
-            <AnalyticsInitializer />
-            <ClientScripts gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+          {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+          )}
           </RecaptchaProvider>
         </ThemeProvider>
       </body>

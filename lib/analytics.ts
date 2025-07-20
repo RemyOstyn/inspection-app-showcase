@@ -1,9 +1,19 @@
 /**
- * Google Analytics 4 tracking utilities
- * Uses @next/third-parties for optimized event tracking
+ * Google Analytics utilities for consent management and event tracking
+ * Works with @next/third-parties GoogleAnalytics component
  */
 
 import { sendGAEvent } from '@next/third-parties/google';
+
+declare global {
+  interface Window {
+    gtag?: (
+      command: string,
+      targetId?: string,
+      config?: Record<string, unknown>
+    ) => void;
+  }
+}
 
 // Analytics types
 export interface ConversionEvent {
@@ -74,5 +84,72 @@ export const trackContactFormSubmit = (data?: { industry?: string; type?: string
   }
 };
 
-// Newsletter tracking removed as per SEO optimization plan
+/**
+ * Check if user has granted analytics consent
+ */
+export const hasAnalyticsConsent = (): boolean => {
+  if (typeof window === 'undefined') return false;
+  
+  const consent = localStorage.getItem('cookie-consent');
+  return consent === 'accepted';
+};
+
+/**
+ * Set user consent for analytics with Google Consent Mode v2
+ */
+export const setAnalyticsConsent = (granted: boolean) => {
+  if (typeof window === 'undefined') return;
+
+  // Configure Google Consent Mode if gtag is available
+  if (window.gtag) {
+    try {
+      // Update consent with Consent Mode v2 parameters
+      window.gtag('consent', 'update', {
+        analytics_storage: granted ? 'granted' : 'denied',
+        ad_storage: granted ? 'granted' : 'denied',
+        ad_user_data: granted ? 'granted' : 'denied',
+        ad_personalization: granted ? 'granted' : 'denied',
+      });
+
+      // Send initial page view if consent is granted
+      if (granted) {
+        window.gtag('event', 'page_view', {
+          page_title: document.title,
+          page_location: window.location.href,
+        });
+      }
+    } catch (error) {
+      console.debug('Analytics consent update failed:', error);
+    }
+  }
+};
+
+/**
+ * Initialize default consent state
+ * Should be called before GA loads
+ */
+export const initializeAnalyticsConsent = () => {
+  if (typeof window === 'undefined') return;
+
+  // Set default denied consent state for GDPR compliance
+  if (window.gtag) {
+    try {
+      window.gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        wait_for_update: 500,
+      });
+
+      // Check for existing consent and apply it
+      const hasConsent = hasAnalyticsConsent();
+      if (hasConsent) {
+        setAnalyticsConsent(true);
+      }
+    } catch (error) {
+      console.debug('Analytics consent initialization failed:', error);
+    }
+  }
+};
 
