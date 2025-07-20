@@ -26,9 +26,6 @@ export const metadata: Metadata = {
   title: "ProFieldWork - Offline Inspection Software",
   description: "Enterprise-grade offline inspection platform that works anywhere. Customizable forms, white-label ready, and trusted by 500+ companies worldwide.",
   robots: "index, follow",
-  alternates: {
-    canonical: "/",
-  },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'placeholder-verification-code',
   },

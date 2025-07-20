@@ -34,6 +34,9 @@ export const metadata: Metadata = {
   title: "ProFieldWork - Offline Inspection Software",
   description: "Transform field operations with offline-first inspection software. Custom forms, mobile platform, and white-label solutions. Start free trial today.",
   keywords: ["offline inspection app", "field inspection software", "mobile inspection platform", "custom inspection forms", "white label inspection software"],
+  alternates: {
+    canonical: "https://www.profieldwork.com/",
+  },
   openGraph: {
     title: "ProFieldWork - Offline Inspection Software",
     description: "Transform field operations with offline-first inspection software. Custom forms, mobile platform, and white-label solutions. Start free trial today.",
